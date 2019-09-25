@@ -15,6 +15,7 @@
 - pip install mypy_entensions 
 - pip install typing extensions 
 - pip install wrap_connection
+
 Após a instalação, execute app.py
  
  Link do Site: --- AINDA SEM LINK --- 
