@@ -1,9 +1,0 @@
-- pip install Flask
-- pip install Flask-SQLAlchemy
-- pip install Flask-EXT
-- pip install Jinja2
-- pip install pyodbc
-- pip install requests
-- pip install mypy_entensions 
-- pip install typing extensions 
-- pip install wrap_connection
