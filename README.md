@@ -1,6 +1,7 @@
 # Primos Moveis Planejados
 
  Neste repositório, encontra-se todo o processo que foi utilizado na Criação do Sistema da Primos Moveis. Na aba Projects, encontramos como foi dividido cada processo e como foi tratado. 
+ 
  Em Branch: Encontramos todas as versões do Sistema. no Ramo Master, encontra a versão final e utilizada. 
  - Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes, João Victor e Jefferson Ximenes. 
  
