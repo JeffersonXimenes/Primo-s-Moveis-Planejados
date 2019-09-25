@@ -5,7 +5,7 @@
  Em Branch: Encontramos todas as versões do Sistema. no Ramo Master, encontra a versão final e utilizada. 
  - Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes, João Victor e Jefferson Ximenes. 
  
- OBS: Para Execução do Projeto é necessário ter as seguintes PIPS INSTALADAS
+ OBS: Para Execução do Projeto é necessário ter as seguintes PIPS INSTALADAS:
 - pip install Flask
 - pip install Flask-SQLAlchemy
 - pip install Flask-EXT
