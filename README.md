@@ -9,7 +9,7 @@ Versâo V1:
   - Implantação do Templates (Código HTML)
   - Implantação de Static (Contém arquivos CSS)
   - Criação da Classe ClienteModel
-  - Criação da tabela Clientes
+  - Criação da Tabela Clientes
   - Definição do METHOD POST, PUT, GET e DELETE (Clientes)
   - 
   
