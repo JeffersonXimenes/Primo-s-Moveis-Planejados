@@ -9,5 +9,15 @@ Versâo V1:
   - Implantação do Templates (Código HTML)
   - Implantação de Static (contém arquivos CSS)
   
+ OBS: Para Execução do Projeto é necessário ter as seguintes PIPS INSTALADAS:
+  - pip install Flask
+  - pip install Flask-SQLAlchemy
+  - pip install Flask-EXT
+  - pip install Jinja2
+  - pip install pyodbc
+  - pip install requests
+  - pip install mypy_entensions
+  - pip install typing extensions
+  - pip install wrap_connection
 
 Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes, João Victor e Jefferson Ximenes.
