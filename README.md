@@ -3,7 +3,6 @@
  Neste repositório, encontra-se todo o processo que foi utilizado na Criação do Sistema da Primos Moveis. Na aba Projects, encontramos como foi dividido cada processo e como foi tratado. 
  
  Em Branch: Encontramos todas as versões do Sistema. no Ramo Master, encontra a versão final e utilizada. 
- - Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes, João Victor e Jefferson Ximenes. 
  
  OBS: Para Execução do Projeto é necessário ter as seguintes PIPS INSTALADAS:
 - pip install Flask
@@ -21,3 +20,4 @@ Após a instalação, execute app.py
  Link do Site: --- AINDA SEM LINK --- 
  Link aplicativo Mobile --- AINDA SEM LINK --- 
  
+- Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes, João Victor e Jefferson Ximenes. 
