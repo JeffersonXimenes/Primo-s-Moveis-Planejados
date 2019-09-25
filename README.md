@@ -5,6 +5,18 @@
  Em Branch: Encontramos todas as versões do Sistema. no Ramo Master, encontra a versão final e utilizada. 
  - Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes, João Victor e Jefferson Ximenes. 
  
+ OBS: Para Execução do Projeto é necessário ter as seguintes PIPS INSTALADAS
+- pip install Flask
+- pip install Flask-SQLAlchemy
+- pip install Flask-EXT
+- pip install Jinja2
+- pip install pyodbc
+- pip install requests
+- pip install mypy_entensions 
+- pip install typing extensions 
+- pip install wrap_connection
+Após a instalação, execute app.py
+ 
  Link do Site: --- AINDA SEM LINK --- 
  Link aplicativo Mobile --- AINDA SEM LINK --- 
  
