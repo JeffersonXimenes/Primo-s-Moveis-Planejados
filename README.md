@@ -7,7 +7,7 @@ Neste repositório, encontra-se todo o processo que foi utilizado na Criação d
 Versâo V1:
   - Implantação do Flask (Framework)
   - Implantação do Templates (Código HTML)
-  - Implantação de Static (contém arquivos CSS)
+  - Implantação de Static (Contém arquivos CSS)
   - Criação da Classe ClienteModel
   - Criação da tabela Clientes
   - Definição do METHOD POST, PUT, GET e DELETE (Clientes)
