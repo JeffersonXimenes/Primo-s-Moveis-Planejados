@@ -10,7 +10,7 @@ Versâo V1:
   - Implantação de Static (Contém arquivos CSS)
   - Criação da Classe ClienteModel
   - Criação da Tabela Clientes
-  - Definição do METHOD POST, PUT, GET e DELETE (Clientes)
+  - Definição dos Method: POST, PUT, GET e DELETE (Clientes)
   - 
   
  OBS: Para Execução do Projeto é necessário ter as seguintes PIPS INSTALADAS:
