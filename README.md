@@ -5,15 +5,11 @@
  Em Branch: Encontramos todas as versões do Sistema. no Ramo Master, encontra a versão final e utilizada. 
  
  OBS: Para Execução do Projeto é necessário ter as seguintes PIPS INSTALADAS:
-- pip install Flask
+- pip install flask
+- pip install flask_restful
 - pip install Flask-SQLAlchemy
-- pip install Flask-EXT
-- pip install Jinja2
-- pip install pyodbc
+- pip install jsons
 - pip install requests
-- pip install mypy_entensions 
-- pip install typing extensions 
-- pip install wrap_connection
 
 Após a instalação, execute app.py
  
