@@ -20,4 +20,4 @@ Após a instalação, execute app.py
  Link do Site: --- AINDA SEM LINK --- 
  Link aplicativo Mobile --- AINDA SEM LINK --- 
  
-- Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes, João Victor e Jefferson Ximenes. 
+- Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes,Jefferson Ximenes e João Victor Nunes. 
