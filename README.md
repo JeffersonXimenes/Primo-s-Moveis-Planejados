@@ -3,6 +3,7 @@
  Neste repositório, encontra-se todo o processo que foi utilizado na Criação do Sistema da Primos Moveis. Na aba Projects, encontramos como foi dividido cada processo e como foi tratado. 
  
  Em Branch: Encontramos todas as versões do Sistema. no Ramo Master, encontra a versão final e utilizada. 
+ 
  Versâo V2:
 
 Implantação do Flask (Framework)
