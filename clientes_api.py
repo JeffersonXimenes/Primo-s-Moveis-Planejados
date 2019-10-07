@@ -7,7 +7,9 @@ from resources.cliente import Clientes,Cliente, ClienteNaoEncontrado,\
 
 clientes_app = Blueprint('clientes_app', __name__, template_folder='templates')
 
-
+@clientes_app.route("/cadastro", methods=["GET"])
+def login():
+    return render_template("login.html", mensagem="Cadastre o cliente")
 
 @clientes_app.route('/clientes', methods=['GET'])
 def listar():
@@ -20,18 +22,20 @@ def localizar(id):
         return jsonify(to_dict(Cliente.get(Cliente,id))), 200
     except ClienteNaoEncontrado:
         return 'menssagem: Cliente não foi encontrado.', 404
-'''
-@clientes_app.route('/clientes/<int:id>', methods=['GET'])
-def localizar(id):
-    verificaCliente = Cliente.get(Cliente,id)
-    if verificaCliente == 0:
-        return 'menssagem: Cliente não foi encontrado.', 404
-    return jsonify(to_dict(Cliente.get(Cliente,id))), 200
-'''
-@clientes_app.route('/clientes', methods=['POST'])
+
+@clientes_app.route('/clientes', methods=['POST','GET'] )
 def criar():
+    #id = request.form["cCliente"]
+    cpf = request.form["nCpf"]
+    nome = request.form["iNome"]
+    email = request.form["iEmail"]
+    dataNascimento = request.form["dataNascimento"]
+    dataCadastro = request.form["dataCadastro"]
+    dados = {"cCliente":id,"nCpf": cpf, "iNome": nome,"iEmail":email,"dataNascimento":dataNascimento,"dataCadastro":dataCadastro}
+    print(dados,"1")
     try:
-        criado = Clientes.post(Clientes)
+        criado = Clientes.post(Clientes,dados)
+        print (jsonify((to_dict_list(criado),"2")))
         return jsonify(to_dict(criado)) , 201
     except CpfInvalido:
         return 'mensagem: CPF invalido.', 500
