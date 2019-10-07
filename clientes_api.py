@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request, render_template
+from infraestrutura.to_dict import to_dict, to_dict_list
 from resources.cliente import Clientes,Cliente, ClienteNaoEncontrado,\
     CpfInvalido, ClienteJaCadastrado,DataInvalida,CpfJaCadastrado
-from infraestrutura.to_dict import to_dict, to_dict_list
+
 
 
 clientes_app = Blueprint('clientes_app', __name__, template_folder='templates')
@@ -29,15 +30,9 @@ def localizar(id):
 '''
 @clientes_app.route('/clientes', methods=['POST'])
 def criar():
-    if request.method == "POST":
-        cpf = request.form.get("nCpf")
-        nome = request.form.get("nome")
-        dataNascimento = request.form.get("dataNascimento")
-        dataCadastro = request.form.get("dataCadastro")
-        print(cpf,nome,dataNascimento,dataCadastro)
     try:
         criado = Clientes.post(Clientes)
-        return jsonify(criado) , 201
+        return jsonify(to_dict(criado)) , 201
     except CpfInvalido:
         return 'mensagem: CPF invalido.', 500
     except ClienteJaCadastrado:
@@ -45,7 +40,7 @@ def criar():
     except DataInvalida:
         return 'mensagem: Data invalida.', 500
     except CpfJaCadastrado:
-        return 'mensagem: CPF do cliente ja foi cadastrado.', 500
+        return 'mensagem: CPF ja cadastrado.', 500
 
 @clientes_app.route('/clientes/<int:id>', methods=['PUT'])
 def atualizar(id):
@@ -70,5 +65,6 @@ def remover(id):
         return 'Aluno atrelado a uma solicitação de matricula', 422
     if removido != None:
         return jsonify(to_dict(removido))
-    return , 404'''
+    return , 404
+'''
 

@@ -4,16 +4,19 @@
  
  Em Branch: Encontramos todas as versões do Sistema. no Ramo Master, encontra a versão final e utilizada. 
  
- Versâo V2:
+ Versâo V3:
 
-Implantação do Flask (Framework)
-Implantação do Templates (Código HTML)
-Implantação de Static (Contém arquivos CSS)
-Criação da Classe ClienteModel e TelefoneModel
-Criação do modulo resource Clientes e telefone
-Criação da API
-Implatação do SQLALchemy
-Definição dos Method: POST, PUT, GET e DELETE (Clientes)
+Criação dos models ClienteModel, TelefoneModel, EndereçosModel,Cargo,Model,FuncionarioModels,TiposModels e VendasModels.
+
+Criação do modulo resource Clientes, Telefones, Endereços,Cargos, Funcionarios, Tipo de pagamento e vendas.
+
+Metodos POST E GET 100%: 
+
+Metodo DELETE 80%(Cliente e funcionario, Cargo,Tipo de pagamento):
+
+Metodo PUT 95% (Cliente e funcionario)
+
+API em funcionamento pelo POSTMAN.
 
  
  OBS: Para Execução do Projeto é necessário ter as seguintes PIPS INSTALADAS:

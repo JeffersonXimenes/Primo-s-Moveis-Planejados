@@ -30,8 +30,8 @@ def localizar(id):
 @telefones_app.route('/telefones', methods=['POST'])
 def criar():
     try:
-        criado = Telefones.post(Telefones), 201
-        return jsonify(criado)
+        criado = Telefones.post(Telefones)
+        return jsonify (to_dict(criado)), 201
     except DDDInvalido:
         return  "mensagem: DDD do telefone invalido", 500
     except NumeroInvalido:

@@ -5,7 +5,7 @@ class TelefoneModel(banco.Model):
     __tablename__ = 'telefones'
 
     cTelefone = banco.Column(banco.Integer, primary_key=True)
-    cCliente = banco.Column(banco.Integer, banco.ForeignKey('clientes.cCliente'), nullable = False)
+    cCliente = banco.Column(banco.Integer, banco.ForeignKey('tClientePF.cCliente'), nullable = False)
     cDDD = banco.Column(banco.Integer, nullable = False)
     nTelefone = banco.Column(banco.Integer , nullable = False)
     dataAtualizacao = banco.Column(banco.String(20), nullable = False)

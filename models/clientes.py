@@ -1,28 +1,34 @@
 from infraestrutura.sql_alchemy import banco
 
 class ClienteModel(banco.Model):
-    __tablename__ = 'clientes'
+    __tablename__ = 'tClientePF'
 
-    cCliente = banco.Column(banco.Integer, primary_key = True)
-    nCpf = banco.Column(banco.Integer, unique = True, nullable = False)
-    nome = banco.Column(banco.String(80))
-    dataNascimento = banco.Column(banco.String(20))
-    dataCadastro = banco.Column(banco.String(20))
+    cCliente = banco.Column(banco.Integer, primary_key = True,  nullable = False)
+    nCpf = banco.Column(banco.String(11), unique = True, nullable = False)
+    iNome = banco.Column(banco.String(255),nullable = False)
+    iEmail = banco.Column(banco.String(255), nullable=False)
+    dataNascimento = banco.Column(banco.String(20),nullable=False)
+    dataCadastro = banco.Column(banco.String(20),nullable=False)
+    iProcedencia = banco.Column(banco.String(255))
 
-    def __init__(self,cCliente, nCpf, nome, dataNascimento, dataCadastro):
+    def __init__(self,cCliente, nCpf, iNome, iEmail, dataNascimento, dataCadastro,iProcedencia):
         self.cCliente = cCliente
         self.nCpf = nCpf
-        self.nome = nome
+        self.iNome = iNome
+        self.iEmail = iEmail
         self.dataNascimento = dataNascimento
         self.dataCadastro = dataCadastro
+        self.iProcedencia = iProcedencia
 
     def json(self):
         return {
-            'nCliente': self.cCliente,
+            'cCliente': self.cCliente,
             'nCpf': self.nCpf,
-            'nome': self.nome,
+            'iNome': self.iNome,
+            'iEmail': self.iEmail,
             'dataNascimento': self.dataNascimento,
-            'dataCadastro': self.dataCadastro
+            'dataCadastro': self.dataCadastro,
+            'iProcedencia': self.iProcedencia
         }
 
     @classmethod
@@ -36,11 +42,13 @@ class ClienteModel(banco.Model):
         banco.session.add(self)
         banco.session.commit()
 
-    def update_cliente(self, nCpf, nome, dataNascimento, dataCadastro):
+    def update_cliente(self, nCpf, iNome, iEmail, dataNascimento, dataCadastro,iProcedencia):
         self.nCpf = nCpf
-        self.nome = nome
+        self.iNome = iNome,
+        self.iEmail = iEmail,
         self.dataNascimento = dataNascimento
-        self.dataCadastro = dataCadastro
+        self.dataCadastro = dataCadastro,
+        self.iProcedencia = iProcedencia
 
     def delete_cliente(self):
         banco.session.delete(self)
