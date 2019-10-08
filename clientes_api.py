@@ -9,7 +9,7 @@ clientes_app = Blueprint('clientes_app', __name__, template_folder='templates')
 
 @clientes_app.route("/cadastro", methods=["GET"])
 def login():
-    return render_template("login.html", mensagem="Cadastre o cliente")
+    return render_template("CadastroClientes.html")
 
 @clientes_app.route('/clientes', methods=['GET'])
 def listar():
