@@ -81,55 +81,79 @@
 		<section class="row no-gutters" style="padding-top: 5px">			
 	    	<div class="col-md-6 offset-md-3">
 
-                <h1 class="text-center text-success"> Cadastro de Clientes </h1>
-                <div class="form-group">
-
-                        <label for="nCpf" class="labelTitulo">CPF</label>
-                        <input type="text" name="nCpf" id="nCpf" class="form-control" autocomplete="off" />
-                </div>
-
-                <div class="form-group">
-                    <label for="iNome" class="labelTitulo">Nome</label>
-                    <input type="text" name="iNome"  id="iNome" class="form-control" autocomplete="off"/>
-                </div>
-
-	    		<div class="form-group">
-	    			<label for="iEmail" class="labelTitulo"> Email</label>
-	    			<input type="text" name="iEmail"  id="iEmail" class="form-control" autocomplete="off"/>
-	    		</div>
-
-				<div class="form-group">
-	    			<label for="dataNascimento" class="labelTitulo"> Data Nascimento</label>
-	    			<input type="text" name="dataNascimento"  id="dataNascimento" class="form-control" autocomplete="off"/>
-	    		</div>
-
-				<div class="form-group">
-	    			<label for="dataCadastro" class="labelTitulo"> Data Cadastro</label>
-	    			<input type="text" name="dataCadastro"  id="dataCadastro" class="form-control" autocomplete="off"/>
-				</div>
+				<h1 class="text-center text-success"> Cadastro de Clientes </h1>
 				
+                <div class="row">
+					<div class="col-md-6">
+						<label for="iNome" class="labelTitulo">Nome</label>
+						<input type="text" name="iNome"  id="iNome" class="form-control" autocomplete="off"/>
+					</div>
+					
+					<div class="col-md-6">
+						<label for="iEmail" class="labelTitulo"> Email</label>
+						<input type="email" name="iEmail"  id="iEmail" class="form-control" autocomplete="off"/>
+					</div>
+				</div>              
+				 
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nCpf" class="labelTitulo">CPF</label>
+						<input type="text" name="nCpf" id="nCpf" class="form-control" autocomplete="off" />
+					</div>
+
+					<div class="col-md-6">
+						<label for="nCel" class="labelTitulo">Celular</label>
+                    	<input type="text" name="nCel" id="nCel" class="form-control" autocomplete="off" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+	    				<label for="dataNascimento" class="labelTitulo"> Data Nascimento</label>
+	    				<input type="text" name="dataNascimento"  id="dataNascimento" class="form-control" autocomplete="off"/>
+	    			</div>
+
+					<div class="col-md-6">
+	    				<label for="dataCadastro" class="labelTitulo"> Data Cadastro</label>
+	    				<input type="text" name="dataCadastro"  id="dataCadastro" class="form-control" autocomplete="off"/>
+					</div>
+				</div>	
+
 				<div class="form-group">
 	    			<label for="procedencia" class="labelTitulo">Como conheceu a Primos Móveis ?</label>
 					<input type="text" name="iProcedencia"  id="iProcedencia" class="form-control" autocomplete="off"/>
 				</div>
 				
-				<div class="form-inline">
-					<label for="endereco" class="labelTitulo">Endereço</label>
-					<input type="text" name="endereco"  id="iEndereco" class="form-control float-left" autocomplete="off"/>
-					
-					<label for="iNumeroEndereco" class="labelTitulo">Numero</label>
-					<input type="text" name="iNumeroEndereco"  id="iNumeroEndereco" class="form-control" autocomplete="off"/>
-				</div>
-				<br>
-				<div class="form-inline">									
-					<label for="iBairro" class="labelTitulo">Bairro</label>
-					<input type="text" name="iBairro"  id="iBairro" class="form-control" autocomplete="off"/>					
-					
-					<label for="uf" class="labelTitulo">UF</label>
-					<input type="text" name="uf"  id="iUf" class="form-control float-rigth" autocomplete="off"/>
+				<hr style="background-color: gold">
+				<div class="row">
+					<div class="col-md-4">
+						<label for="endereco" class="labelTitulo">Endereço</label>
+						<input type="text" name="endereco"  id="iEndereco" class="form-control" autocomplete="off"/>
+					</div>
+
+					<div class="col-md-4">
+						<label for="iNumeroEndereco" class="labelTitulo">Numero</label>
+						<input type="text" name="iNumeroEndereco"  id="iNumeroEndereco" class="form-control" autocomplete="off"/>
+					</div>
+
+					<div class="col-md-4">
+							<label for="iBairro" class="labelTitulo">Bairro</label>
+							<input type="text" name="iBairro"  id="iBairro" class="form-control" autocomplete="off"/>					
+					</div>
 				</div>
 				
-				
+				<div class="row">
+					<div class="col-md-4">
+						<label for="uf" class="labelTitulo">UF</label>
+						<input type="text" name="uf"  id="iUf" class="form-control float-rigth" autocomplete="off"/>		
+					</div>
+					<div class="col-md-8">
+						<label for="iComplemento" class="labelTitulo">Complemento</label>
+						<input type="text" name="iComplemento"  id="iComplemento" class="form-control" autocomplete="off"/>					
+					</div>
+				</div>
+
+				<br>			
 
 	    		<input type="submit" name="Confirmar" value="Confirmar" onclick=" painelDiario()" class="btn-info btn float-right" />
 				<input type="button" name="Limpar" value="Limpar" onclick=" limpar()" class="btn-danger btn float-left" />
