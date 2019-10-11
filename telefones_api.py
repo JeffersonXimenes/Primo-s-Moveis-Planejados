@@ -39,7 +39,7 @@ def criar():
 
     dados = {"cCliente":3, 
             "cDDD":ddd, 
-            "cTelefone":3, 
+            "cTelefone":id, 
             "dataAtualizacao":dataAtualizacao, 
             "nTelefone": telefone}
 
