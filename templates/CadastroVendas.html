@@ -46,17 +46,17 @@
 </head>
 <body>
 
-    <form action="/clientes" method="POST">
+    <form action="/vendas" method="POST">
    	<div id="full">
 
-        <!-- <nav id="menu">
+        <nav id="menu">
             <ul>
                 <li><a href="#"> Primos Móveis </a></li>                
             </ul>
-        </nav> -->
+        </nav>
 
 		<!-- Menu lateral -->
-	    <!-- <div id="mySidenav" class="sidenav">
+	    <div id="mySidenav" class="sidenav">
 
 	       	 <a class="title-sidnav simple-text" style="background-color: transparent; padding-top: 10px; border: none!important;">Menu</a>
 	       	 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="background-color: transparent; padding-top: 30px; border: none!important;">&times;</a>
@@ -75,95 +75,54 @@
 	        <div class="col-md-6 flex-column">
 	            <span style="font-size: 30px; cursor: pointer; color: #D0A23C !important;" onclick="openNav()">&#9776;</span>
 	        </div>
-	    </div> -->
+	    </div>
 	    <!-- Menu lateral -->
 
 		<section class="row no-gutters" style="padding-top: 5px">			
 	    	<div class="col-md-6 offset-md-3">
 
-				<h1 class="text-center text-success"> Cadastro de Clientes </h1>
+				<h1 class="text-center text-success"> Cadastro de Vendas </h1>
 				
                 <div class="row">
 					<div class="col-md-6">
-						<label for="iNome" class="labelTitulo">Nome</label>
-						<input type="text" name="iNome"  id="iNome" class="form-control" autocomplete="off"/>
-					</div>
+	    				<label for="dataVenda" class="labelTitulo"> Data Venda</label>
+	    				<input type="text" name="dataVenda"  id="dataVenda" class="form-control" autocomplete="off"/>
+	    			</div>
 					
+
 					<div class="col-md-6">
-						<label for="iEmail" class="labelTitulo"> Email</label>
-						<input type="email" name="iEmail"  id="iEmail" class="form-control" autocomplete="off"/>
+						<label for="nContrato" class="labelTitulo">Contrato</label>
+						<input type="text" name="nContrato"  id="nContrato" class="form-control" autocomplete="off"/>
 					</div>
 				</div>              
 				 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="nCpf" class="labelTitulo">CPF</label>
-						<input type="text" name="nCpf" id="nCpf" class="form-control" autocomplete="off" />
-					</div>
+						<label for="iTipoContrato" class="labelTitulo">Tipo Contrato</label>
+						<input type="text" name="iTipoContrato" id="iTipoContrato" class="form-control" autocomplete="off" />
+					</div>				
+				</div>				
 
-					<div class="col-md-6">
-						<label for="cDDD" class="labelTitulo">DDD</label>
-                    	<input type="text" name="cDDD" id="cDDD" class="form-control" autocomplete="off" />
-					</div>
+                <div class="row">
+				    <div class="col-md-12">
+	    			    <label for="cTipoPagamento" class="labelTitulo">Tipo Pagamento</label>
+					    <input type="text" name="cTipoPagamento"  id="cTipoPagamento" class="form-control" autocomplete="off"/>
+				    </div>
+                </div>
 
-					<div class="col-md-6">
-						<label for="nTelefone" class="labelTitulo">Celular</label>
-                    	<input type="text" name="nTelefone" id="nTelefone" class="form-control" autocomplete="off" />
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6">
-	    				<label for="dataNascimento" class="labelTitulo"> Data Nascimento</label>
-	    				<input type="text" name="dataNascimento"  id="dataNascimento" class="form-control" autocomplete="off"/>
-	    			</div>
-
-				</div>
-
-				<div class="form-group">
-	    			<label for="iProcedencia" class="labelTitulo">Como conheceu a Primos Móveis ?</label>
-					<input type="text" name="iProcedencia"  id="iProcedencia" class="form-control" autocomplete="off"/>
-				</div>
-				
 				<hr style="background-color: gold">
-
-			    				<div class="row">
-					<div class="col-md-4">
-						<label for="iEndereco" class="labelTitulo">Endereço</label>
-						<input type="text" name="iEndereco"  id="iEndereco" class="form-control" autocomplete="off"/>
-					</div>
-
-					<div class="col-md-4">
-						<label for="nCep" class="labelTitulo">Cep</label>
-						<input type="text" name="nCep"  id="nCep" class="form-control" autocomplete="off"/>
-					</div>
-
-					<div class="col-md-4">
-							<label for="iBairro" class="labelTitulo">Bairro</label>
-							<input type="text" name="iBairro"  id="iBairro" class="form-control" autocomplete="off"/>
-					</div>
-				</div>
-
+			    				
 				<div class="row">
-					<div class="col-md-4">
-						<label for="cUf" class="labelTitulo">UF</label>
-						<input type="text" name="cUf"  id="cUf" class="form-control float-rigth" autocomplete="off"/>
-					</div>
-					<div class="col-md-8">
-						<label for="iComplemento" class="labelTitulo">Complemento</label>
-						<input type="text" name="iComplemento"  id="iComplemento" class="form-control" autocomplete="off"/>
-					</div>
-				</div>
-			    <div class="row">
-					<div class="col-md-6">
-	    				<label for="dataAtualizacao" class="labelTitulo"> Data Atualização</label>
-	    				<input type="text" name="dataAtualizacao"  id="dataAtualizacao" class="form-control" autocomplete="off"/>
-	    			</div>
-			    </div>
-
-
-				
-
+                    <div class="col-md-6">
+                        <label for="cCliente" class="labelTitulo">Codigo Cliente</label>
+                        <input type="text" name="cCliente" id="cCliente" class="form-control" autocomplete="off" />
+                    </div>
+        
+                    <div class="col-md-6">
+                        <label for="cFuncionario" class="labelTitulo">Codigo Funcionario</label>
+                        <input type="text" name="cFuncionario" id="cFuncionario" class="form-control" autocomplete="off" />
+                    </div>
+                </div>
 
 				<br>			
 

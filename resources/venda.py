@@ -32,7 +32,7 @@ class Vendas(Resource):
 
     def get(self):
         return {'vendas': [venda.json() for venda in VendasModel.query.all()]} # SELECT * FROM clientes
-    def post(self):
+    def post(self, dados):
         dados = Vendas.atributos.parse_args()
         id = dados['cPedido']
         dataVenda = dados['dataVenda']

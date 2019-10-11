@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, render_template
 from resources.venda import Venda,Vendas,IdJaExiste,IdClienteNaoExiste,\
     DataInvalida,IdFuncNaoExiste,ErroInserir,VendaNaoExiste,TipoNaoExiste
 from infraestrutura.to_dict import to_dict, to_dict_list
@@ -6,6 +6,9 @@ from infraestrutura.to_dict import to_dict, to_dict_list
 
 vendas_app = Blueprint('vendas_app', __name__, template_folder='templates')
 
+@vendas_app.route('/cadastroVendas', methods=['GET'])
+def login():
+   return render_template("CadastroVendas.html")
 
 @vendas_app.route('/vendas', methods=['GET'])
 def listar():
@@ -22,9 +25,26 @@ def localizar(id):
 
 @vendas_app.route('/vendas', methods=['POST'])
 def criar():
+    dataVenda = request.form["dataVenda"]
+    contrato = request.form["nContrato"]
+    tipoContrato = request.form["iTipoContrato"]
+    tipoPagamento = request.form["cTipoPagamento"] 
+    funcionario = request.form["cFuncionario"] 
+    cliente = request.form["cCliente"] 
+
+    dadosVendas = {
+        "dataVenda": dataVenda,
+        "nContrato": contrato,
+        "iTipoContrato": tipoContrato,
+        "cTipoPagamento": tipoPagamento,
+        "cFuncionario": funcionario,  
+        "cCliente":cliente  
+    }
+
     try:
-        criado = Vendas.post(Vendas)
-        return jsonify (to_dict(criado)), 201
+        criaVenda = Vendas.post(Vendas, dadosVendas)
+
+        return 'criado', 201
     except IdJaExiste:
         return  "mensagem:ID venda já existe.", 500
     except IdFuncNaoExiste:

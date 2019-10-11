@@ -27,7 +27,7 @@ class Funcionarios(Resource):
 
     def get(self):
         return {'funcionarios': [funcionario.json() for funcionario in FuncionarioModel.query.all()]} # SELECT * FROM clientes
-    def post(self):
+    def post(self, dados):
         dados = Funcionarios.atributos.parse_args()
         id = dados['cFuncionario']
         dataNascimento = dados['dataNascimento']

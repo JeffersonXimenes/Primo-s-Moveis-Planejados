@@ -34,7 +34,7 @@ def criar():
     nome = request.form["iNome"]
     email = request.form["iEmail"]
     dataNascimento = request.form["dataNascimento"]
-    dataCadastro = request.form["dataCadastro"]
+    dataCadastro = request.form["dataAtualizacao"]
     dados = {"nCpf": cpf, "iNome": nome,"iEmail":email,"dataNascimento":dataNascimento,"dataCadastro":dataCadastro}
 
     cep = request.form["nCep"]
@@ -58,71 +58,3 @@ def criar():
         return 'criado', 201
     except CpfInvalido:
         return 'mensagem: CPF invalido.', 500
-    except ClienteJaCadastrado:
-        return 'mensagem: Cliente com ID ja cadastrado.', 500
-    except DataInvalida:
-        return 'mensagem: Data invalida.', 500
-    except CpfJaCadastrado:
-        return 'mensagem: CPF ja cadastrado.', 500
-
-    except CepInvalido:
-        return  "mensagem: CEP do endereço invalido", 500
-    except UfInvalido:
-        return "mensagem: Uf do endereço invalido", 500
-    except IdJaExiste:
-        return "menssagem: ID endereço  já existe.", 400
-    except IdClienteNaoExiste:
-        return "mensagem: Cliente não encontrado.", 500
-    except ErroInserir:
-        return "mensagem: Ocorreu um erro ao inserir o endereco.", 500
-    except DataInvalida:
-        return "mensagem: Data invalida.", 500
-
-    except DDDInvalido:
-        return  "mensagem: DDD do telefone invalido", 500
-    except NumeroInvalido:
-        return "mensagem: Numero de telefone invalido", 500
-    except IdJaExiste:
-        return "menssagem: ID Telefone  já existe.", 400
-    except IdClienteNaoExiste:
-        return "mensagem: Cliente não encontrado.", 500
-    except ErroInserir:
-        return "mensagem: Ocorreu um erro ao inserir o telefone.", 500
-'''
-        id_cliente = str(criado['cCliente'])
-        print(id_cliente,"id_cliente")
-        dadosEndereco =  {"cEndereco": id, "cCliente": id_cliente, "nCep": cep, "iEndereco": endereco,"iComplemento": complemento, "iBairro": bairro, "cUf": uf,"dataAtualizacao":dataAtualizacao}
-        print(dadosEndereco,"dados endereco")
-        criadoEndereco = Enderecos.post(Enderecos,dadosEndereco)
-        #print(criadoEndereco, "criado endereco" , criado,"criados pessoa")
-        
-
-
-
-'''
-@clientes_app.route('/clientes/<int:id>', methods=['PUT'])
-def atualizar(id):
-    try:
-        atualizado = Cliente.put(Cliente,id), 201
-        return jsonify(to_dict(atualizado)), 201
-    except CpfInvalido:
-        return 'mensagem: CPF invalido.', 500
-    except DataInvalida:
-        return 'mensagem: Data invalida.', 500
-    except CpfJaCadastrado:
-        return 'mensagem: Ocorreu um erro ao atualizar o cliente, CPF de outro cliente.', 500
-    except ClienteNaoEncontrado:
-        return 'mensagem: Cliente não encontrado.', 500
-
-'''
-@clientes_app.route('/alunos/<int:id>', methods=['DELETE'])
-def remover(id):
-    try:
-        removido = service_remover(id)
-    except AlunoAtreladoASolicitacaoMatricula:
-        return 'Aluno atrelado a uma solicitação de matricula', 422
-    if removido != None:
-        return jsonify(to_dict(removido))
-    return , 404
-'''
-

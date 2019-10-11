@@ -114,4 +114,3 @@ class Telefone(Resource):
             telefone.delete_telefone()
             return {'messagem': 'telefone deletado.'}
         raise TelefoneNaoExiste()
-

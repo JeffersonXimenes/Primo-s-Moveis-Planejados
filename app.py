@@ -52,4 +52,4 @@ def all():
 if __name__ == '__main__':
     from infraestrutura.sql_alchemy import banco
     banco.init_app(app)
-    app.run(host='localhost', port=5000)
+    app.run(host='localhost', port=8000)

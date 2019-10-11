@@ -1,10 +1,14 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, render_template
 from resources.funcionario import Funcionario,Funcionarios, CpfInvalido, FuncionarioNaoExiste,IdJaExiste,\
     DataInvalida,CargoNaoExiste,ErroInserir
 from infraestrutura.to_dict import to_dict, to_dict_list
 
 
 funcionarios_app = Blueprint('funcionarios_app', __name__, template_folder='templates')
+
+@funcionarios_app.route('/cadastroFuncionarios', methods=['GET'])
+def login():    
+    return render_template("CadastroFuncionarios.html")
 
 
 @funcionarios_app.route('/funcionarios', methods=['GET'])
@@ -21,9 +25,26 @@ def localizar(id):
 
 @funcionarios_app.route('/funcionarios', methods=['POST'])
 def criar():
+
+    nome = request.form["iNome"]
+    cpf = request.form["nCpf"]
+    matricula = request.form["nMatricula"]
+    dataNascimento = request.form["dataNascimento"] 
+    cargo = request.form["cCargo"] 
+
+    dadosFuncionario = {
+        "iNome": nome,
+        "nCpf": cpf,
+        "nMatricula": matricula,
+        "dataNascimento": dataNascimento,
+        "cCargo": cargo    
+    }
+
     try:
-        criado = Funcionarios.post(Funcionarios)
-        return jsonify (to_dict(criado)), 201
+        criarFuncionario = Funcionarios.post(Funcionarios,dadosFuncionario)
+
+        return 'criado', 201
+
     except IdJaExiste:
         return  "mensagem:Id do funcionario já existe.", 500
     except DataInvalida:
