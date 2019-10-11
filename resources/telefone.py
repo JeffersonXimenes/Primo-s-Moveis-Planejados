@@ -29,8 +29,8 @@ class Telefones(Resource):
 
     def get(self):
         return {'telefones': [telefone.json() for telefone in TelefoneModel.query.all()]} # SELECT * FROM clientes
-    def post(self):
-        dados = Telefones.atributos.parse_args()
+    def post(self,dados):
+        #dados = Telefones.atributos.parse_args()
         id = dados['cTelefone']
         dataAtualizacao = dados['dataAtualizacao']
         id_cliente = dados['cCliente']

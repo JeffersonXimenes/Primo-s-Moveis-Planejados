@@ -5,6 +5,8 @@ from resources.cliente import Clientes,Cliente, ClienteNaoEncontrado,\
 from resources.endereco import Endereco,Enderecos, EnderecoNaoExiste, CepInvalido,\
 UfInvalido,IdJaExiste,IdClienteNaoExiste,ErroInserir,DataInvalida
 from infraestrutura.to_dict import to_dict, to_dict_list
+from resources.telefone import Telefone,Telefones, TelefoneNaoExiste, DDDInvalido,\
+NumeroInvalido,IdJaExiste,IdClienteNaoExiste,ErroInserir,DataInvalida
 
 
 clientes_app = Blueprint('clientes_app', __name__, template_folder='templates')
@@ -42,14 +44,17 @@ def criar():
     uf = request.form["cUf"]
     dataAtualizacao = request.form["dataAtualizacao"]
 
+    ddd = request.form["cDDD"]
+    telefone = request.form["nTelefone"]
+
 #{"nCpf":"47932819822", "iNome":"Joao","iEmail":"joao@jo","dataNascimento":"26/09/2019","dataCadastro":"11/10/2019"}
 
     try:
         criado = Clientes.post(Clientes)
         dadosEndereco = {"cEndereco":criado['cCliente'], "cCliente": criado['cCliente'], "nCep": cep, "iEndereco": endereco, "iComplemento": complemento,"iBairro": bairro, "cUf": uf, "dataAtualizacao": dataAtualizacao}
         criarEndereco = Enderecos.post(Enderecos,dadosEndereco)
-
-
+        dadosTelefone = {"cTelefone":criado['cCliente'],"cCliente": criado['cCliente'],"cDDD":ddd,"nTelefone":telefone,"dataAtualizacao": dataAtualizacao }
+        criarTelefone = Telefones.post(Telefones,dadosTelefone)
         return 'criado', 201
     except CpfInvalido:
         return 'mensagem: CPF invalido.', 500
@@ -72,6 +77,17 @@ def criar():
         return "mensagem: Ocorreu um erro ao inserir o endereco.", 500
     except DataInvalida:
         return "mensagem: Data invalida.", 500
+
+    except DDDInvalido:
+        return  "mensagem: DDD do telefone invalido", 500
+    except NumeroInvalido:
+        return "mensagem: Numero de telefone invalido", 500
+    except IdJaExiste:
+        return "menssagem: ID Telefone  já existe.", 400
+    except IdClienteNaoExiste:
+        return "mensagem: Cliente não encontrado.", 500
+    except ErroInserir:
+        return "mensagem: Ocorreu um erro ao inserir o telefone.", 500
 '''
         id_cliente = str(criado['cCliente'])
         print(id_cliente,"id_cliente")
