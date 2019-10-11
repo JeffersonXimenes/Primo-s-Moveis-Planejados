@@ -31,11 +31,11 @@ class Telefones(Resource):
         return {'telefones': [telefone.json() for telefone in TelefoneModel.query.all()]} # SELECT * FROM clientes
     def post(self, dados):
         dados = Telefones.atributos.parse_args()
-        id = 80
-        dataAtualizacao = "22/03/2019"
-        id_cliente = 3
-        numerotel = "111111111"
-        ddd = "11"
+        id = dados['cTelefone']
+        dataAtualizacao = dados['dataAtualizacao']
+        id_cliente = dados['cCliente']
+        numerotel = dados['nTelefone']
+        ddd = dados['cDDD']
 
         if len(str(ddd)) != 2:
             raise DDDInvalido()
