@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, render_template
 from resources.telefone import Telefone,Telefones, TelefoneNaoExiste, DDDInvalido,\
 NumeroInvalido,IdJaExiste,IdClienteNaoExiste,ErroInserir,DataInvalida
 from infraestrutura.to_dict import to_dict, to_dict_list
@@ -6,6 +6,10 @@ from infraestrutura.to_dict import to_dict, to_dict_list
 
 telefones_app = Blueprint('telefones_app', __name__, template_folder='templates')
 
+
+@telefones_app.route('/CadastroTelefones', methods=['GET'])
+def login():    
+    return render_template("Cadastro_Clientes/CadastroTelefones.html")
 
 @telefones_app.route('/telefones', methods=['GET'])
 def listar():
@@ -27,11 +31,24 @@ def localizar(id):
     return jsonify(to_dict(Cliente.get(Cliente,id))), 200
 '''
 
-@telefones_app.route('/telefones', methods=['POST'])
-def criar():
+@telefones_app.route('/telefones', methods=['POST'] )
+def criar():    
+    dataAtualizacao = "22/03/2019"
+    ddd = request.form["nDDD"]
+    telefone = request.form["nTelefone"]
+
+    dados = {"cCliente":3, 
+            "cDDD":ddd, 
+            "cTelefone":3, 
+            "dataAtualizacao":dataAtualizacao, 
+            "nTelefone": telefone}
+
     try:
-        criado = Telefones.post(Telefones)
-        return jsonify (to_dict(criado)), 201
+
+        dadosTel = Telefones.post(Telefones, dados)  
+
+        print (jsonify((to_dict_list(dadosTel),"2")))      
+        return jsonify(to_dict(dadosTel)), 201
     except DDDInvalido:
         return  "mensagem: DDD do telefone invalido", 500
     except NumeroInvalido:
