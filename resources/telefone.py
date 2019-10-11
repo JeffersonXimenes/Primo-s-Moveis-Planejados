@@ -29,13 +29,14 @@ class Telefones(Resource):
 
     def get(self):
         return {'telefones': [telefone.json() for telefone in TelefoneModel.query.all()]} # SELECT * FROM clientes
-    def post(self):
+    def post(self, dados):
         dados = Telefones.atributos.parse_args()
-        id = dados['cTelefone']
-        dataAtualizacao = dados['dataAtualizacao']
-        id_cliente = dados['cCliente']
-        numerotel = dados['nTelefone']
-        ddd = dados['cDDD']
+        id = 80
+        dataAtualizacao = "22/03/2019"
+        id_cliente = 3
+        numerotel = "111111111"
+        ddd = "11"
+
         if len(str(ddd)) != 2:
             raise DDDInvalido()
 
@@ -63,7 +64,7 @@ class Telefones(Resource):
 class Telefone(Resource):
     atributos = reqparse.RequestParser()
     atributos.add_argument('cCliente', type=int)
-    atributos.add_argument('cDDD', type=int)
+    atributos.add_argument('nDDD', type=int)
     atributos.add_argument('nTelefone', type=int)
     atributos.add_argument('dataAtualizacao', type=str)
 
@@ -78,7 +79,7 @@ class Telefone(Resource):
         dados = Telefone.atributos.parse_args()
         dataAtualizacao = dados['dataAtualizacao']
         numerotel = dados['nTelefone']
-        ddd = dados['cDDD']
+        ddd = dados['nDDD']
         id_cliente = dados['cCliente']
         if len(str(ddd)) != 2:
             raise DDDInvalido()
