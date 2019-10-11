@@ -25,13 +25,12 @@ class Clientes(Resource):
 
     def get(self):
         return {'clientes': [cliente.json() for cliente in ClienteModel.query.all()]} # SELECT * FROM clientes
-    def post(self,dados):
+    def post(self):
         dados = Clientes.atributos.parse_args()
         id = dados['cCliente']
         dataNascimento = dados['dataNascimento']
         dataCadastro = dados['dataCadastro']
         cpf = dados['nCpf']
-        print(dados)
         if len(str(cpf)) != 11:
             raise CpfInvalido()
             #return {"mensagem": "CPF invalido."}, 500

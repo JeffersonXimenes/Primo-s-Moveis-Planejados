@@ -9,19 +9,19 @@ class EnderecoModel(banco.Model):
     nCep = banco.Column(banco.String(8), nullable=False)
     iEndereco = banco.Column(banco.String(255), nullable = False)
     iComplemento = banco.Column(banco.String(255),nullable = False)
-    iBarro = banco.Column(banco.String(255), nullable = False)
+    iBairro = banco.Column(banco.String(255), nullable = False)
     cUf = banco.Column(banco.String(2),nullable=False)
     dataAtualizacao = banco.Column(banco.String(20),nullable = False)
 
 
 
-    def __init__(self, cEndereco, cCliente, nCep, iEndereco, iComplemento,iBarro,cUf,dataAtualizacao):
+    def __init__(self, cEndereco, cCliente, nCep, iEndereco, iComplemento,iBairro,cUf,dataAtualizacao):
         self.cEndereco = cEndereco
         self.cCliente = cCliente
         self.nCep = nCep
         self.iEndereco = iEndereco
         self.iComplemento = iComplemento
-        self.iBarro = iBarro
+        self.iBairro = iBairro
         self.cUf = cUf
         self.dataAtualizacao = dataAtualizacao
 
@@ -31,8 +31,8 @@ class EnderecoModel(banco.Model):
             'cCliente': self.cCliente,
             'nCep': self.nCep,
             'iEndereco': self.iEndereco,
-            'iComplemento': self.iBarro,
-            'iBarro': self.iEndereco,
+            'iComplemento': self.iBairro,
+            'iBairro': self.iEndereco,
             'cUf': self.cUf,
             'dataAtualizacao': self.dataAtualizacao
         }
@@ -48,12 +48,12 @@ class EnderecoModel(banco.Model):
         banco.session.add(self)
         banco.session.commit()
 
-    def update_endereco(self, cCliente, nCep, iEndereco, iComplemento,iBarro,cUf,dataAtualizacao):
+    def update_endereco(self, cCliente, nCep, iEndereco, iComplemento,iBairro,cUf,dataAtualizacao):
         self.cCliente = cCliente
         self.nCep = nCep
         self.iEndereco = iEndereco
         self.iComplemento = iComplemento
-        self.iBarro = iBarro
+        self.iBairro = iBairro
         self.cUf = cUf
         self.dataAtualizacao = dataAtualizacao
 

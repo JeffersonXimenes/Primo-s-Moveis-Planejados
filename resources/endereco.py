@@ -26,14 +26,14 @@ class Enderecos(Resource):
     atributos.add_argument('nCep', type=str)
     atributos.add_argument('iEndereco', type=str)
     atributos.add_argument('iComplemento', type=str)
-    atributos.add_argument('iBarro', type=str)
+    atributos.add_argument('iBairro', type=str)
     atributos.add_argument('cUf', type=str)
     atributos.add_argument('dataAtualizacao', type=str)
 
     def get(self):
         return {'endereços': [endereco.json() for endereco in EnderecoModel.query.all()]} # SELECT * FROM clientes
-    def post(self):
-        dados = Enderecos.atributos.parse_args()
+    def post(self,dados):
+        #dados = Enderecos.atributos.parse_args()
         id = dados['cEndereco']
         dataAtualizacao = dados['dataAtualizacao']
         id_cliente = dados['cCliente']
@@ -69,7 +69,7 @@ class Endereco(Resource):
     atributos.add_argument('nCep', type=str)
     atributos.add_argument('iEndereco', type=str)
     atributos.add_argument('iComplemento', type=str)
-    atributos.add_argument('iBarro', type=str)
+    atributos.add_argument('iBairro', type=str)
     atributos.add_argument('cUf', type=str)
     atributos.add_argument('dataAtualizacao', type=str)
 
