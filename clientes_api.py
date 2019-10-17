@@ -43,6 +43,7 @@ def criar():
 
     cep = request.form["nCep"]
     endereco = request.form["iEndereco"]
+    numero = request.form["numero"]
     complemento = request.form["iComplemento"]
     bairro = request.form["iBairro"]
     uf = request.form["cUf"]
@@ -56,7 +57,7 @@ def criar():
     try:
         criado = Clientes.post(Clientes)
         dadosEndereco = {"cEndereco": criado['cCliente'], "cCliente": criado['cCliente'], "nCep": cep,
-                         "iEndereco": endereco, "iComplemento": complemento, "iBairro": bairro, "cUf": uf,
+                         "iEndereco": endereco, "numero":numero,"iComplemento": complemento, "iBairro": bairro, "cUf": uf,
                          "dataAtualizacao": dataAtualizacao}
         criarEndereco = Enderecos.post(Enderecos, dadosEndereco)
         dadosTelefone = {"cTelefone": criado['cCliente'], "cCliente": criado['cCliente'], "cDDD": ddd,

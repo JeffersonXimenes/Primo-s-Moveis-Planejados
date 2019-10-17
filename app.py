@@ -34,13 +34,13 @@ def all():
     from models.funcionario_models import FuncionarioModel
     from models.tipoPagamento_models import TipoPagamentoModel
     from models.vendas_models import VendasModel
-    database = {'clientes': [cliente.json() for cliente in ClienteModel.query.all()],
+    database = [{'clientes': [cliente.json() for cliente in ClienteModel.query.all()],
                 'telefones': [telefone.json() for telefone in TelefoneModel.query.all()],
                 'endereços': [endereco.json() for endereco in EnderecoModel.query.all()],
                 'cargos': [cargo.json() for cargo in CargoModel.query.all()],
                 'funcionarios': [funcionario.json() for funcionario in FuncionarioModel.query.all()],
                 'tipo_pagamento': [pagamento.json() for pagamento in TipoPagamentoModel.query.all()],
-                'vendas': [venda.json() for venda in VendasModel.query.all()]}
+                'vendas': [venda.json() for venda in VendasModel.query.all()]}]
     return jsonify(database)
 
 
