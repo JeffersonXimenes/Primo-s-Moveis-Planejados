@@ -1,0 +1,60 @@
+body {
+    background-image: url('../Imagens/planodefundo.jpeg') !important;
+}
+
+#div_login {
+    padding-top: 5px;
+    border: 1px solid gray;
+    height: 300px;
+    border-radius: 8px;
+    background-color: rgba(0,0,0,0.6);
+    box-shadow: 5px 4px 5px #2b2b2b;
+}
+
+h2 {
+    text-align: center;
+    color: white !important;
+}
+
+.div_info {
+    margin-top: 60px;
+    margin-left: 90px;
+}
+
+input[type=text] {
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid #D0A23C;
+    background-color: transparent;
+    color: #D0A23C;
+    text-align: center;
+}
+
+input[type=password] {
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid #D0A23C;
+    background-color: transparent;
+    color: #D0A23C;
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+    color: #D0A23C;
+}
+
+.btn_confirmar {
+    width: 80%;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius:  4px;
+    color: #000;
+}
+
+    .btn_confirmar:hover {
+        background-color: #2b2b2b;
+        color: #D0A23C;
+        transition: 0.4s;
+        cursor: pointer;
+    }
