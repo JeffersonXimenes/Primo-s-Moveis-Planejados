@@ -8,13 +8,13 @@ cargo_app = Blueprint('cargo_app', __name__, template_folder='templates')
 
 
 @cargo_app.route('/cargos', methods=['GET'])
-@login_required
+# @login_required
 def listar():
     listar = Cargos.get(Cargos)
     return jsonify (listar)
 
 @cargo_app.route('/cargos/<int:id>', methods=['GET'])
-@login_required
+# @login_required
 def localizar(id):
     try:
         return jsonify(to_dict(Cargo.get(Cargo,id))), 200
@@ -30,7 +30,7 @@ def localizar(id):
 '''
 
 @cargo_app.route('/cargos', methods=['POST'])
-@login_required
+# @login_required
 def criar():
     try:
         criado = Cargos.post(Cargos)
@@ -41,7 +41,7 @@ def criar():
         return "mensagem: Ocorreu um erro ao inserir o cargo.", 500
 
 @cargo_app.route('/cargos/<int:id>', methods=['PUT'])
-@login_required
+# @login_required
 def atualizar(id):
     try:
         atualizado = Cargo.put(Cargo,id)
@@ -54,7 +54,7 @@ def atualizar(id):
 
 
 @cargo_app.route('/cargos/<int:id>', methods=['DELETE'])
-@login_required
+# @login_required
 def remover(id):
     try:
         removido = Cargo.delete(Cargo,id)

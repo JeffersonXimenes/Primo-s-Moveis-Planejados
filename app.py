@@ -8,9 +8,11 @@ from cargos_api import cargo_app
 from funcionarios_api import funcionarios_app
 from tipoPagamento_api import tipoPagamento_app
 from vendas_api import vendas_app
+from acompanhamento_api import acompanhamento_app
 
 
 app = Flask(__name__)
+app.register_blueprint(acompanhamento_app)
 app.register_blueprint(clientes_app)
 app.register_blueprint(telefones_app)
 app.register_blueprint(enderecos_app)
