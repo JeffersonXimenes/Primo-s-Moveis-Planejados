@@ -1,0 +1,196 @@
+{% if current_user.is_authenticated %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title> Feedback Cliente </title>
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='../static/bootstrap/css/bootstrap.min.css')  }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/inicial.css') }}"> 
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "0px";
+            document.getElementById("full").style.marginLeft = "250px";
+
+            document.getElementById("mySidenav").style.transition = "0.1s";
+            document.getElementById("main").style.transition = "0.1s";
+            document.getElementById("full").style.transition = "0.1s";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.getElementById("full").style.marginLeft = "0px";
+        }
+
+        function novoChamado(){
+        	document.getElementById("aberturaChamado").style.display = "inline";
+        	document.getElementById("section").style.display = "none";
+        	document.getElementById("section1").style.display = "none";
+        }
+
+        function voltaNovoChamado(){
+        	document.getElementById("aberturaChamado").style.display = "none";
+        	document.getElementById("section1").style.display = "none";
+        	document.getElementById("section").style.display = "inline";
+        }
+
+        function acompanhamentoChamado(){
+        	document.getElementById("section").style.display = "none";
+			document.getElementById("section1").style.display = "inline";
+        }
+
+        function limpar(){
+        	document.getElementById("movel").value = "";
+        	document.getElementById("TipoDaOcorrencia").value = "";
+        	document.getElementById("textArea").value = "";
+        }
+
+    </script>
+</head>
+
+<body>
+    <form id="form1" action="/agendarSuporte" method="POST">
+    	<div id="full">
+			<!-- Logo em cima no TOPO -->
+			<nav id="menu">
+					<ul> <!-- ../Templates [Última versão]/Logo_PrimosMoveis.png -->
+						<img src="../static/img/Logo_PrimosMoveis.png" height="80px" width="240px" style="margin-left: 60px">  
+						<!-- <li class="float-right"><a href="#" onclick="voltaNovoChamado()"> Voltar </a></li>   -->
+						<a href="http://localhost:5000/agendarSuporte"><li><img class="float-right" style="width: 40px; height: 40px; margin-right: 20px" src="../static/img/back.png"></li></a>
+					</ul>
+				</nav>
+			<!-- Fim da Logo no TOPO -->
+			<div id="mySidenav" class="sidenav">
+					<a class="title-sidnav simple-text" style="font-size: 30px; background-color: transparent; padding-top: 10px; border: none!important;">Menu</a>
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="background-color: transparent;padding-top: 30px;border:none !important;">&times;</a>
+					<ul>
+						<li>
+							<a href="Inicial_Cliente.html"><i class=""></i>• Pagina Inicial</a>
+							<a href="http://localhost:5000"><i class=""></i>• Cadastro Clientes</a>
+							<a href="http://localhost:5000/cadastroVendas"><i class=""></i>• Cadastro de Vendas</a>
+							<a href="http://localhost:5000/feedback"><i class=""></i>• Feedback</a>
+							<a href="http://localhost:5000/agendarSuporte"><i class=""></i>• Agendar Suporte</a>	
+							<a href="{{ url_for('logout') }}"><i class=""></i>• Sair</a>	
+						</li> 
+					</ul>
+				</div>
+			
+
+		</div>
+
+		<div id="main" class="no-gutters row" style="margin-top: -20px;">
+			<div class="col-md-6 flex-column">
+				<span style="font-size: 30px; cursor: pointer; color: rgb(255, 255, 255) !important;" onclick="openNav()">&#9776;</span>
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+	    	<section class="row no-gutters" style="padding-top: 100px" id="section">
+	    		<div class="col-md-3 offset-md-2 divs" onclick="novoChamado()">
+	    			<h3 href="" class="h3" style="font-size: 20px"> Novo Chamado </h3>
+	    			<img src="../static/img/chamados.png" style="width: 54%; margin-left: 23%;margin-top: -2%;"/>
+	    		</div>
+	    	
+	   			<div class="col-md-3 offset-md-2 divs" onclick="acompanhamentoChamado()">
+	     			<h3 class="h3"> Acompanhamento de Chamado </h3>
+	     			<img src="../static/img/acompanhamento.png" style="width: 50%; margin-left: 25%;" class="img-responsive"/>
+	    		</div>
+	   		</section>
+
+	      
+	      <section class="row no-gutters"  id="aberturaChamado">
+	    	<div class="col-md-6 offset-md-3" style="margin-top: -60px">
+
+	    		<h1 class="text-center text-secondary" style="color: white"> Abertura de Chamados </h1>
+
+	    		<div class="form-group">
+	    			<label for="movel" class="labelTitulo">Móvel</label>
+	    			<select class="form-control" id="movel">
+	    				<option>
+	    					Criado Mudo X
+	    				</option>
+	    				<option>
+	    					Guarda-Roupas Y
+	    				</option>
+	    			</select>
+	    		</div>
+
+	    		<div class="form-group">
+	    			<label for="TipoDaOcorrencia" class="labelTitulo">Tipo da Ocorrência</label>
+	    			<select class="form-control" id="TipoDaOcorrencia">
+	    				<option>
+	    					Defeito de Fábrica
+	    				</option>
+	    				<option>
+	    					Uso de Garantia
+	    				</option>
+	    			</select>
+	    		</div>
+
+	    		<div class="form-group">
+	    			<label for="textArea" class="labelTitulo">Tipo da Ocorrência</label>
+	    			<textarea class="form-control" style="width: 100%; min-height: 200px; max-height: 220px" id="textArea">	    				
+	    			</textarea>
+	    		</div>
+
+	    		<input type="button" name="Confirmar" value="Confirmar" onclick=" painelDiario()" class="btn-info btn float-right" />
+                <input type="button" name="Limpar" value="Limpar" onclick=" limpar()" class="btn-danger btn float-left" />
+
+	    	</div>
+	    </section>
+
+	    <section id="section1" style="padding-top: 100px">
+	    	<div class="col-md-8 offset-md-2">
+
+	    		<table class="table table-hover table-bordered ">
+		    		<thead>
+		    			<tr class="text-info text-center">
+			    			<th style='border-right: 1px solid lightgray'> Móvel </th>
+			    			<th style='border-right: 1px solid lightgray'> Endereço </th>
+			    			<th style='border-right: 1px solid lightgray'> Data Agendada </th>
+			    			<th style='border-right: 1px solid lightgray'> Descrição </th>
+		    			</tr>
+		    		</thead>
+
+		    		<tbody class="text-warning">
+		    			<tr>
+		    				<th class='text-left'> Criado Mudo X </th>
+		    				<th class='text-center'> Rua Pernambucana </th>
+		    				<th class='text-center'> 02/02/2020 </th>
+		    				<th class='text-center'> Pintura </th>
+		    			</tr>
+		    			<tr>
+		    				<th class='text-left'> Guarda Roupa Y </th>
+		    				<th class='text-center'> Rua Alagoana </th>
+		    				<th class='text-center'> 02/02/2020 </th>
+		    				<th class='text-center'> Reparo na Gaveta </th>
+		    			</tr>
+		    			<tr>
+		    				<th class='text-left'> Guarda Roupa Y </th>
+		    				<th class='text-center'> Rua Lambucana </th>
+		    				<th class='text-center'> 02/02/2020 </th>
+		    				<th class='text-center'> Trilhos da porta </th>
+		    			</tr>
+		    		</tbody>
+		    	</table>
+
+	    	</div>
+	    </section>
+	        
+    </form>
+</body>
+</html>
+
+{% else %}
+    <div>
+        <h1>Visitante</h1>
+        <p>Esste texto aparece caso você não esteja logado.</p>
+    </div>
+{% endif %}

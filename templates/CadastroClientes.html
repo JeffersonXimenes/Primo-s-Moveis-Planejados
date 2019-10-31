@@ -1,0 +1,485 @@
+﻿{% if current_user.is_authenticated %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+
+	<title> Cadastro de Vendas </title>
+
+	<!-- bootstrap -->
+    
+	<link rel="stylesheet" href="{{ url_for('static', filename='../static/bootstrap/css/bootstrap.min.css')  }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/CadastroClientes.css') }}"> 
+    <script language="javascript" src="{{ url_for('static', filename='../static/js/valida_cadastro.js') }}"></script> 
+	<!-- <script language="javascript" src="{{ url_for('static', filename='../static/js/valida_cadastroCliente.js') }}"></script> --> 
+	
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "0px";
+            document.getElementById("full").style.marginLeft = "250px";
+
+            document.getElementById("mySidenav").style.transition = "0.1s";
+            document.getElementById("main").style.transition = "0.1s";
+            document.getElementById("full").style.transition = "0.1s";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.getElementById("full").style.marginLeft = "0px";
+        }
+
+		function redirectVendas(){
+			window.location.href = "Vendas/CadastroVendas.html";
+		}		
+
+        function limpar(){
+        	document.getElementById("cpfCliente").value = "";
+        	document.getElementById("nome").value = "";
+        	document.getElementById("dataNascimento").value = "";
+            document.getElementById("Telefone").value = "";
+            document.getElementById("Email").value = "";
+            document.getElementById("endereco").value = "";
+		}
+		
+
+
+    </script>
+
+
+</head>
+<body>
+	<div class="altera_placeHolder">
+	<form method="POST" action="/clientes"  onsubmit="return valida_cadastro()">
+	   
+	<div id="full">
+
+		<!-- Logo em cima no TOPO -->
+		<nav id="menu">
+			<ul> <!-- ../Templates [Última versão]/Logo_PrimosMoveis.png -->
+				<img src="../static/img/Logo_PrimosMoveis.png" height="80px" width="240px" style="margin-left: 60px">  
+				<!-- <li class="float-right"><a href="#" onclick="voltaNovoChamado()"> Voltar </a></li>   -->
+				<a href="CadastroVendas.html"><li><img class="float-right" style="width: 40px; height: 40px; margin-right: 20px" src="../static/img/back.png"></li></a>
+			</ul>
+		</nav>
+		<!-- Fim da Logo no TOPO -->
+			
+	</div>    
+
+		<!-- FINAL DO Campo menuzin abaixo da logo -->
+	
+		<!-- Menu lateral -->
+		<div id="mySidenav" class="sidenav">
+			<a class="title-sidnav simple-text" style="background-color: transparent; padding-top: 10px; border: none!important;">Menu</a>
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="background-color: transparent;padding-top: 30px;border:none !important;">&times;</a>
+			<br />
+			<br />
+
+	        <ul>
+				<li>
+					<a href="Inicial_Cliente.html"><i class=""></i>• Pagina Inicial</a>
+					<a href="http://localhost:5000"><i class=""></i>• Cadastro Clientes</a>
+					<a href="http://localhost:5000/cadastroVendas"><i class=""></i>• Cadastro de Vendas</a>
+					<a href="http://localhost:5000/feedback"><i class=""></i>• Feedback</a>
+					<a href="http://localhost:5000/agendarSuporte"><i class=""></i>• Agendar Suporte</a>	
+					<a href="{{ url_for('logout') }}"><i class=""></i>• Sair</a>
+			</li>
+		</ul>
+		</div>
+	
+		<div id="main" class="no-gutters row" style="margin-top: -20px;">
+			<div class="col-md-6 flex-column">
+				<span style="font-size: 30px; cursor: pointer; color: rgb(255, 255, 255) !important;" onclick="openNav()">&#9776;</span>
+			</div>
+		</div>
+		<!-- Menu lateral -->
+
+		<section class="row no-gutters" style="margin-top: -60px">			
+	    	<div class="col-md-6 offset-md-3">
+				
+				<h1 class="text-center" style="color: azure; font-size: 40px" > Cadastro de Clientes </h1>
+				
+                <div class="row">
+					<div class="col-md-6"> <!-- CAMPO JÁ EDITADO E CONFIGURADO-->
+						<label for="iNome" class="labelTitulo">Nome</label>
+						<input type="text" name="iNome"  id="iNome" class="form-control"  onkeyup="verificar_campo_str(this);" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" placeholder="Digite seu nome completo" maxlength="37" required/>	
+						<script>
+							function verificar_campo_str(){
+							var texto=document.getElementById("iNome").value;
+							for (letra of texto){
+								if (!isNaN(texto)){
+									alert("Não digite números! 🤷");
+									document.getElementById("iNome").value="";
+									return;
+								}
+							
+								letraspermitidas="ABCEDFGHIJKLMNOPQRSTUVXWYZ abcdefghijklmnopqrstuvxwyzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ"
+								var ok=false;
+								for (letra2 of letraspermitidas ){
+									if (letra==letra2){
+										ok=true;
+									}
+								}
+								if (!ok){
+									alert("Não digite caracteres que não sejam letras ou espaços");
+									document.getElementById("iNome").value="";
+									return; 
+									}
+								}
+							}
+						</script>	
+					</div> 	<!-- CAMPO JÁ EDITADO. NÃO MEXA!!!!!!!!!!!!!!!!!! -->
+
+
+
+					<div class="col-md-6"> <!-- NÃO MEXA NESSE CAMPO RAMELAO-->
+						<label for="iEmail" class="labelTitulo"> E-mail</label>
+						<input type="email" name="iEmail"  id="iEmail" class="form-control"  onkeyup="verificar_campo_email(this);" autocomplete="off" placeholder="exemplo@exemplo.com.br" maxlength="40" required/>
+						<script>
+							function verificar_campo_email(){
+								var texto=document.getElementById("iEmail").value;
+								for (letra of texto){
+									if (!isNaN(texto)){
+										return;
+									}
+								
+									letraspermitidas="ABCEDFGHIJKLMNOPQRSTUVXWYZ abcdefghijklmnopqrstuvxwyzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ -_@. 123456789"
+									var ok=false;
+									for (letra2 of letraspermitidas ){
+										if (letra==letra2){
+											ok=true;
+										}
+									}
+									if (!ok){
+										alert("Não tente caracteres pra lá de especiais!");
+										document.getElementById("iEmail").value="";
+										return; 
+									}
+								}
+							}
+						</script>							
+					</div>
+				</div> <!-- CAMPO ALTAMENTE EDITADO DE CIMA PRA BAIXO HIHI NÃO MEXA!!!!! -->             	 
+			
+
+				<div class="row">	<!-- CAMPO ALTAMENTE CONFIGURADO, SAÍ FORA!!!! -->
+					<div class="col-md-6">
+						<label for="nCpf" class="labelTitulo">CPF</label>
+						<input type="text" name="nCpf" id="nCpf" class="form-control" autocomplete="off" pattern="[0-9]+$" onkeyup="ValidarNumeros_CPF(nCpf);" placeholder="000.000.000-00" maxlength="11" required/>						
+					
+						<script>
+						
+							function ValidarNumeros_CPF(num) {
+        						var er = /[^0-9.]/;
+        						er.lastIndex = 0;
+        						var campo = num;
+        						if (er.test(campo.value)) {
+									alert("Digite apenas números! 🤷")  
+									campo.value = "";
+        							}
+							}
+						
+						</script>
+					<!-- CAMPO JÁ EDITADO E FUNCIONANDO NÃO MEXA!!!!!!!! -->
+					
+					</div>
+
+
+					<div class="col-md-6"> <!-- CAMPO ALTAMENTE CONFIGURADO, SAÍ FORA!!!! -->
+						<label for="nCel" class="labelTitulo">Celular</label>
+                    	<input type="text" name="nCel" id="nCel" class="form-control" autocomplete="off"  onkeyup="ValidarNumeros_Celular(this);" placeholder="(00) 0 0000-0000" maxlength="12" required/>
+					</div>
+					<script>
+						
+						function ValidarNumeros_Celular(num) {
+        					var er = /[^0-9.-]/;
+        					er.lastIndex = 0;
+        					var campo = num;
+        					if (er.test(campo.value)) {
+								alert("Digite apenas números! 🤷")  
+								campo.value = "";
+        					}
+						}
+					</script>
+
+				<!-- CONFIGURADO JÁ TA, RALAAAAA!!!-->
+				</div>
+
+				
+
+				<div class="row">  <!-- CAMPO ALTAMENTE CONFIGURADO, SAÍ FORA!!!! -->
+					<div class="col-md-6">
+						<label for="dataNascimento" class="labelTitulo"> Data Nascimento</label>
+						<input type="text" name="dataNascimento"  id="dataNascimento" class="form-control" autocomplete="off" onkeyup="Adicionar_BarraData('dataNascimento'); Validar_DataNascimento(this)"   placeholder="dd/mm/aaaa" maxlength="10" required/>
+					
+						<script>
+				
+							function Adicionar_BarraData(id){
+								obj = document.getElementById(id);
+								vl = obj.value;
+								l = vl.toString().length;
+								switch(l){
+									case 2:
+									obj.value = vl + "/";
+									break;
+									case 5:
+										obj.value = vl + "/";
+										break;
+								}
+							}
+
+							function Validar_DataNascimento(num) {
+        					var er = /[^0-9/]/;
+        					er.lastIndex = 0;
+        					var campo = num;
+        					if (er.test(campo.value)) {
+								alert("Digite apenas números! 🤷")  
+								campo.value = "";
+        						}	
+							}
+												
+						</script>
+						<!-- CAMPO ACIMA JÁ ALTAMENTE EDITADO!!!!! -->
+					</div>
+		
+					
+					<div class="col-md-2 ml-auto"  > <!-- CAMPO ALTAMENTE CONFIGURADO, SAÍ FORA!!!! -->
+						<label for="cDDD" class="labelTitulo">DDD</label>
+						<input type="text" name="cDDD"  id="cDDD" class="form-control" autocomplete="off" onkeyup="valida_contato(this)" placeholder="00" maxlength="2" required/>
+
+						<script>
+						
+							function valida_contato (num) {
+        							var er = /[^0-9]/;
+        							er.lastIndex = 0;
+        							var campo = num;
+        							if (er.test(campo.value)) {
+										alert("Digite apenas números! 🤷")  
+										campo.value = "";
+										}
+									
+									}
+						
+						</script>	
+						<!-- AQUI TA PRONTO!!!!! -->
+			    	</div>
+
+					<div class="col-md-4 ml-auto" > <!-- CAMPO ALTAMENTE CONFIGURADO, SAÍ FORA!!!! -->
+						<label for="nTelefone"  class="labelTitulo">Telefone </label>
+						<input type="text" name="nTelefone"  id="nTelefone" class="form-control" autocomplete="off" onkeyup="valida_numero(this)" placeholder="0000-0000" maxlength="9" required/>
+				
+				
+						<script> 
+						
+							function valida_numero (num) {
+									var er = /[^0-9-]/;
+									er.lastIndex = 0;
+									var campo = num;
+									if (er.test(campo.value)) {
+										alert("Digite apenas números! 🤷")  
+										campo.value = "";
+										}
+									
+								}
+								
+						</script>	
+
+					</div> <!-- AQUI TA PRONTO!!!!! -->
+				</div>
+
+
+				<div class="row">
+					
+					<div class="col-md-6">
+	    				<label for="dataCadastro" class="labelTitulo"> Data Cadastro</label>
+	    				<input type="text" name="dataCadastro"  id="dataCadastro" class="form-control" autocomplete="off" onkeyup="Adicionar_BarraData('dataCadastro'); Validar_DataNascimento(this)" placeholder="dd/mm/aaaa" maxlength="10" required/>	
+					
+	
+					</div>
+					
+				</div>	
+
+				<div class="form-group">
+	    			<label for="iProcedencia" class="labelTitulo">Como conheceu a Primos Móveis ?</label>
+					<input type="text" name="iProcedencia"  id="iProcedencia" class="form-control" autocomplete="off" placeholder= "Conte para a gente..." maxlength="70"/>
+				</div>
+				
+				<hr style="background-color: gold">
+
+			    <div class="row">
+					<div class="col-md-6 ml-auto">
+						<label for="iEndereco" class="labelTitulo">Endereço</label>
+						<input type="text" name="iEndereco"  id="iEndereco" class="form-control" autocomplete="off" onkeyup="verificar_campo_iEndereco(this)" placeholder="Av. Barão de Mauá" maxlength="35" required/>
+						
+						<script>
+							function verificar_campo_iEndereco(){
+							var texto=document.getElementById("iEndereco").value;
+							for (letra of texto){
+								if (!isNaN(texto)){
+									return;
+								}
+							
+								letraspermitidas="ABCEDFGHIJKLMNOPQRSTUVXWYZ abcdefghijklmnopqrstuvxwyzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ 123456789"
+								var ok=false;
+								for (letra2 of letraspermitidas ){
+									if (letra==letra2){
+										ok=true;
+									}
+								}
+								if (!ok){
+									alert("Não digite caracteres que não sejam letras ou espaços");
+									document.getElementById("iEndereco").value="";
+									return; 
+									}
+								}
+							}
+						</script>	
+					
+					
+					
+					</div>
+
+					<div class="col-md-2 ml-auto">
+						<label for="iEndereco" class="labelTitulo">Nº</label>
+						<input type="text" name="numero"  id="numero" class="form-control" onkeyup="valida_contato(this)" autocomplete="off" placeholder="44" maxlength="2" required/>
+					
+
+					
+					</div>
+
+					<div class="col-md-4 ml-auto">
+						<label for="iComplemento" class="labelTitulo">*Complemento  </label>
+						<input type="text" name="iComplemento"  id="iComplemento" onkeyup="verificar_campo_iComplemento(this)" class="form-control" autocomplete="off" maxlength="7"/>
+					
+						<script>
+							function verificar_campo_iComplemento(){
+							var texto=document.getElementById("iComplemento").value;
+							for (letra of texto){
+								if (!isNaN(texto)){
+									alert("Não digite números! 🤷");
+									document.getElementById("iComplemento").value="";
+									return;
+								}
+							
+								letraspermitidas="ABCEDFGHIJKLMNOPQRSTUVXWYZ abcdefghijklmnopqrstuvxwyzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ"
+								var ok=false;
+								for (letra2 of letraspermitidas ){
+									if (letra==letra2){
+										ok=true;
+									}
+								}
+								if (!ok){
+									alert("Não digite caracteres que não sejam letras ou espaços");
+									document.getElementById("iComplemento").value="";
+									return; 
+									}
+								}
+							}
+						</script>	
+					
+					</div>
+
+					<div class="col-md-6 ml-auto">
+						<label for="iBairro" class="labelTitulo">Bairro</label>
+						<input type="text" name="iBairro"  id="iBairro" class="form-control" autocomplete="off" onkeyup="verificar_campo_iBairro(this)" placeholder="Vila Bocaina, Mauá" maxlength="25" required />
+					
+						<script>
+							function verificar_campo_iBairro(){
+							var texto=document.getElementById("iBairro").value;
+							for (letra of texto){
+								if (!isNaN(texto)){
+									alert("Não digite números! 🤷");
+									document.getElementById("iBairro").value="";
+									return;
+								}
+							
+								letraspermitidas="ABCEDFGHIJKLMNOPQRSTUVXWYZ abcdefghijklmnopqrstuvxwyzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ"
+								var ok=false;
+								for (letra2 of letraspermitidas ){
+									if (letra==letra2){
+										ok=true;
+									}
+								}
+								if (!ok){
+									alert("Não digite caracteres que não sejam letras ou espaços");
+									document.getElementById("iBairro").value="";
+									return; 
+									}
+								}
+							}
+						</script>	
+					
+					</div>
+
+					<div class="col-md-3 ml-auto">
+						<label for="nCep" class="labelTitulo">Cep</label>
+						<input type="text" name="nCep"  id="nCep" class="form-control" autocomplete="off" onkeyup="valida_numero(this)" placeholder="09310-000" maxlength="9" required/>
+					</div>
+
+					<div class="col-md-3 ml-auto">
+						<label for="cUf" class="labelTitulo">UF</label>
+						<!-- <input type="text" name="cUf"  id="cUf" class="form-control float-rigth" autocomplete="off" placeholder="SP" maxlength="2" /> -->
+						<select name="cUf" id="cUf" class="form-control float-rigth" required>
+							<option name="cUf" id="cUf" value="">UF</option>
+							<option name="cUf" id="cUf" value="AC">AC</option>
+							<option name="cUf" id="cUf" value="AL">AL</option>
+							<option name="cUf" id="cUf" value="AM">AM</option>
+							<option name="cUf" id="cUf" value="AP">AP</option>
+							<option name="cUf" id="cUf" value="BA">BA</option>
+							<option name="cUf" id="cUf" value="CE">CE</option>
+							<option name="cUf" id="cUf" value="DF">DF</option>
+							<option name="cUf" id="cUf" value="ES">ES</option>
+							<option name="cUf" id="cUf" value="GO">GO</option>
+							<option name="cUf" id="cUf" value="MA">MA</option>
+							<option name="cUf" id="cUf" value="MG">MG</option>
+							<option name="cUf" id="cUf" value="MS">MS</option>
+							<option name="cUf" id="cUf" value="MT">MT</option>
+							<option name="cUf" id="cUf" value="PA">PA</option>
+							<option name="cUf" id="cUf" value="PB">PB</option>
+							<option name="cUf" id="cUf" value="PE">PE</option>
+							<option name="cUf" id="cUf" value="PI">PI</option>
+							<option name="cUf" id="cUf" value="PR">PR</option>
+							<option name="cUf" id="cUf" value="RJ">RJ</option>
+							<option name="cUf" id="cUf" value="RN">RN</option>
+							<option name="cUf" id="cUf" value="RS">RS</option>
+							<option name="cUf" id="cUf" value="RO">RO</option>
+							<option name="cUf" id="cUf" value="RR">RR</option>
+							<option name="cUf" id="cUf" value="SC">SC</option>
+							<option name="cUf" id="cUf" value="SE">SE</option>
+							<option name="cUf" id="cUf" value="SP">SP</option>
+							<option name="cUf" id="cUf" value="TO">TO</option>
+						 </select>
+					</div>
+
+				</div>
+
+			    <div class="row">
+					<div class="col-md-6">
+	    				<label for="dataAtualizacao" class="labelTitulo"> Data Atualização</label>
+	    				<input type="text" name="dataAtualizacao"  id="dataAtualizacao" class="form-control" onkeyup="Adicionar_BarraData('dataAtualizacao'); Validar_DataNascimento(this)" autocomplete="off" placeholder="" maxlength="10" required/>
+					
+					
+					</div>			
+				</div>	
+				<br>			
+
+	    		<input type="submit" name="Confirmar" value="Enviar" class="btn-info btn float-right" />
+				<input type="button" name="Limpar" value="Limpar" onclick=" limpar()" class="btn-danger btn float-left" />
+
+	    	</div>
+	    </section>
+
+	</form>
+	</div>
+</body>
+</html>
+
+{% else %}
+    <div>
+        <h1>Visitante</h1>
+        <p>Esste texto aparece caso você não esteja logado.</p>
+    </div>
+{% endif %}
