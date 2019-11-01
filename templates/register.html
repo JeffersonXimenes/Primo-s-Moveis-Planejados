@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Cadastro </title>
+    <!-- bootstrap -->
+        
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/bootstrap/css/bootstrap.min.css')  }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/register.css') }}"> 
+    <script language="javascript" src="{{ url_for('static', filename='../static/js/valida_cadastro.js') }}"></script> 
+    <!-- <script language="javascript" src="{{ url_for('static', filename='../static/js/valida_cadastroCliente.js') }}"></script> --> 
+
+</head>
+<body style="background-image: url('../img/planodefundo.jpeg')">
+    
+<form action="" method="post">
+    <div id="full">
+		<!-- Logo em cima no TOPO -->
+		<nav id="menu">
+			<ul> <!-- ../Templates [Última versão]/Logo_PrimosMoveis.png -->
+				<img src="../static/img/Logo_PrimosMoveis.png" height="80px" width="240px" style="margin-left: 60px">  
+				<!-- <li class="float-right"><a href="#" onclick="voltaNovoChamado()"> Voltar </a></li>   -->
+				<!--<a href="CadastroVendas.html"><li><img class="float-right" style="width: 40px; height: 40px; margin-right: 20px" src="../static/img/back.png"></li></a>-->
+			</ul>
+		</nav>
+        <!-- Fim da Logo no TOPO -->
+        <h1 class="text-center" style="color: whitesmoke"> Cadastre-se </h1>
+<div class="" style="margin: 0 auto;">
+    <div class="col-md-4" style="margin: 0 auto;">
+        <label style="color: rgba(12, 12, 12, 0.7);"><b>Nome</b></label>
+        <input type="text" name="name" class="form-control" placeholder="Nome Sobrenome" required>
+    </div>
+    <br/>
+    <div class="col-md-4" style="margin: 0 auto;">
+        <label style="color: rgba(12, 12, 12, 0.7);"><b>E-mail</b></label>
+        <input type="email" name="email" class="form-control" placeholder="exemplo@exemplo.com.br" required>
+    </div>
+    <br/>
+    <div class="col-md-2" style="margin: 0 auto;">
+        <label style="color:rgba(12, 12, 12, 0.7);"><b>Senha</b></label>
+        <input type="password" name="password" class="form-control" placeholder="********">
+    </div>
+    <br/>
+    <br/>
+    <div class="container">
+        <input type="submit" value="Cadastrar" class="btn-danger btn float-right" style="margin-left: 625px" />
+        <a class="btn-info btn float-right" style="width: 130px; height: 40px; margin-left: 250px" href="http://localhost:5000/login">Login</a>
+    </div>
+</div>
+</form>
+</body>
+
+</html>

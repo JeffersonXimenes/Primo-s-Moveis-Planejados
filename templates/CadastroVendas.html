@@ -1,0 +1,228 @@
+{% if current_user.is_authenticated %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+
+	<title> Cadastro de Vendas </title>
+
+	<!-- bootstrap -->
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='../static/bootstrap/css/bootstrap.min.css')  }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/CadastroClientes.css') }}"> 
+	<script language="javascript" src="{{ url_for('static', filename='../static/js/valida_cadastro_vendas.js') }}"></script> 
+	
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "0px";
+            document.getElementById("full").style.marginLeft = "250px";
+
+            document.getElementById("mySidenav").style.transition = "0.1s";
+            document.getElementById("main").style.transition = "0.1s";
+            document.getElementById("full").style.transition = "0.1s";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.getElementById("full").style.marginLeft = "0px";
+        }
+
+		function redirectVendas(){
+			window.location.href = "Vendas/CadastroVendas.html";
+		}		
+
+        function limpar(){
+        	document.getElementById("cpfCliente").value = "";
+        	document.getElementById("nome").value = "";
+        	document.getElementById("dataNascimento").value = "";
+            document.getElementById("Telefone").value = "";
+            document.getElementById("Email").value = "";
+            document.getElementById("endereco").value = "";
+		}
+		
+
+
+    </script>
+
+
+</head>
+<body>
+
+    <form action="/vendas" method="POST" onsubmit="return valida_cadastro_vendas()">
+   	<div id="full">
+
+		<nav id="menu">
+			<ul> <!-- ../Templates [Última versão]/Logo_PrimosMoveis.png -->
+				<img src="../static/img/Logo_PrimosMoveis.png" height="73px" width="215px" style="margin-left: 60px">  
+				<!-- <li class="float-right"><a href="#" onclick="voltaNovoChamado()"> Voltar </a></li> -->   
+				<a href="CadastroClientes.html"><li><img class="float-right" style="width: 40px; height: 40px; margin-right: 20px" src="../static/img/back.png"></li></a>
+			</ul>
+		</nav>
+
+		<!-- Menu lateral -->
+	    <div id="mySidenav" class="sidenav">
+
+	       	 <a class="title-sidnav simple-text" style="background-color: transparent; padding-top: 10px; border: none!important;">Menu</a>
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="background-color: transparent;padding-top: 30px;border:none !important;">&times;</a>
+	       	<br />
+	     	<br />
+	        
+	        <ul>
+	      	      <li>
+					  <a href="http://localhost:5000/paginainicial"><i class=""></i>• Pagina Inicial</a>
+					  <a href="http://localhost:5000"><i class=""></i>• Cadastro Clientes</a>
+					  <a href="http://localhost:5000/cadastroVendas"><i class=""></i>• Cadastro de Vendas</a>
+					  <a href="http://localhost:5000/cadastroFuncionarios"><i class=""></i>• Cadastro de Funcionários</a>
+					  <a href="http://localhost:5000/feedback"><i class=""></i>• Feedback</a>
+					  <a href="http://localhost:5000/agendarSuporte"><i class=""></i>• Agendar Suporte</a>
+					  <a href="http://localhost:5000/acompanhamentoPedido"><i class="">• Registro de Acompanhamento</i></a>
+					  <a href="{{ url_for('logout') }}"><i class=""></i>• Sair</a>
+	            </li>
+	        </ul>
+	    </div>
+
+	    <div id="main" class="no-gutters row" style="margin-top: -20px;">
+	        <div class="col-md-6 flex-column">
+	            <span style="font-size: 30px; cursor: pointer; color: rgb(255, 255, 255) !important;" onclick="openNav()">&#9776;</span>
+	        </div>
+	    </div>
+	    <!-- Menu lateral -->
+
+		<section class="row no-gutters" style="margin-top: -60px">			
+	    	<div class="col-md-6 offset-md-3">
+
+				<h1 class="text-center" style="color: azure; font-size: 35px" > Cadastro de Vendas </h1>
+				
+                <div class="row">
+					<div class="col-md-6">
+	    				<label for="dataVenda" class="labelTitulo"> Data Venda</label>
+	    				<input type="text" name="dataVenda"  id="dataVenda" class="form-control" onkeyup="Adicionar_BarraData('dataVenda'); Validar_DataNascimento(this)" maxlength="10" placeholder="dd/mm/aaaa" autocomplete="off" required/>
+					
+						<script>
+
+							function Adicionar_BarraData(id){
+								obj = document.getElementById(id);
+								vl = obj.value;
+								l = vl.toString().length;
+								switch(l){
+									case 2:
+										obj.value = vl + "/";
+										break;
+									case 5:
+										obj.value = vl + "/";
+										break;
+								}
+							}
+
+							function Validar_DataNascimento(num) {
+        						var er = /[^0-9/]/;
+        						er.lastIndex = 0;
+        						var campo = num;
+        						if (er.test(campo.value)) {
+									alert("Digite apenas números! 🤷")  
+									campo.value = "";
+        						}	
+							}
+
+						</script>
+					
+					</div>
+					
+
+					<div class="col-md-6">
+						<label for="nContrato" class="labelTitulo">Contrato</label>
+						<input type="text" name="nContrato"  id="nContrato" class="form-control" maxlength="8" onkeyup="valida_numero(this)" placeholder="00000000" maxlength="8" utocomplete="off"/>
+					
+						<script>
+							function valida_numero (num) {
+								var er = /[^0-9]/;
+								er.lastIndex = 0;
+								var campo = num;
+								if (er.test(campo.value)) {
+									alert("Digite apenas números! 🤷")  
+									campo.value = "";
+									}
+											
+							}
+						</script>
+					
+					
+					</div>
+				</div>              
+				 
+				<div class="row">
+					<div class="col-md-6">
+						<label for="iTipoContrato" class="labelTitulo">Tipo de Contrato</label>
+						<!-- <input type="text" name="iTipoContrato" id="iTipoContrato" class="form-control"  autocomplete="off" /> -->
+						<select name="iTipoContrato" id="iTipoContrato" class="form-control" required>
+							<option value="">Vazio</option>
+							<option value="Normal">Normal</option>
+							<option value="Futura">Futura</option>
+						</select>
+										
+					</div>	
+					
+			
+					<div class="col-md-6">
+						<label for="cTipoPagamento" class="labelTitulo">Tipo de Pagamento</label>
+					
+						
+						<select name="cTipoPagamento" id="cTipoPagamento" class="form-control" required>
+							<option name="" id="" value="">Vazio</option>
+							<option name="cTipoPagamento" id="cTipoPagamento" value="1">Dinheiro</option>
+							<option name="cTipoPagamento" id="cTipoPagamento" value="2">Cheque</option>
+							<option name="cTipoPagamento" id="cTipoPagamento" value="3">Cartão de Crédito</option>
+							<option name="cTipoPagamento" id="cTipoPagamento" value="4">Cartão de Débito</option>
+							<option name="cTipoPagamento" id="cTipoPagamento" value="5">Construcard</option>
+							<option name="cTipoPagamento" id="cTipoPagamento" value="6">Permuta</option>
+							<option name="cTipoPagamento" id="cTipoPagamento" value="7">Pagamento com Veículo</option>
+							<option name="cTipoPagamento" id="cTipoPagamento" value="8">Terceira Loja</option>
+						 </select>
+					
+					</div>
+					
+				</div>				
+
+
+
+				<hr style="background-color: gold">
+			    				
+				<div class="row">
+                    <div class="col-md-6">
+                        <label for="cCliente" class="labelTitulo">Codigo Cliente</label>
+                        <input type="text" name="cCliente" id="cCliente" class="form-control" maxlength="8" placeholder="00000000" onkeyup="valida_numero(this)" placeholder="00000000" maxlength="8" autocomplete="off" required/>
+		 
+										
+
+			
+			
+					</div>
+        
+                    <div class="col-md-6">
+                        <label for="cFuncionario" class="labelTitulo">Codigo Funcionario</label>
+                        <input type="text" name="cFuncionario" id="cFuncionario" maxlength="8" placeholder="00000000" onkeyup="valida_numero(this)" placeholder="00000000" onkeyup="valida_numero(this)"  class="form-control" autocomplete="off" required/>
+                    </div>
+                </div>
+
+				<br>			
+
+	    		<input type="submit" name="Confirmar" value="Confirmar" class="btn-info btn float-right" />
+				<input type="button" name="Limpar" value="Limpar" onclick=" limpar()" class="btn-danger btn float-left" />
+
+	    	</div>
+	    </section>
+		</div>
+    </form>
+</body>
+</html>
+
+{% else %}
+    <div>
+        <h1>Visitante</h1>
+        <p>Esste texto aparece caso você não esteja logado.</p>
+    </div>
+{% endif %}
