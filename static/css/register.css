@@ -1,0 +1,24 @@
+body{
+    background-image: url('../img/planodefundo.jpeg') !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px
+}     
+
+.labelTitulo{
+    color: black;
+  
+}
+
+
+.row .col-md-6 ::placeholder{
+    color: gray;
+    opacity: 0.5;
+}
+div.container { 
+    min-height: 10em;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: table-cell;
+    margin: 0 auto
+}
