@@ -6,6 +6,7 @@ from infraestrutura.to_dict import to_dict, to_dict_list
 
 feedback_app = Blueprint('feedback_app', __name__, template_folder='templates')
 
+
 @feedback_app.route('/cadastrofeedback', methods=['GET'])
 @login_required
 def login():
@@ -26,42 +27,33 @@ def localizar(id):
         return 'menssagem: Feedback não foi encontrado.', 404
 
 
-"""
 
 @feedback_app.route('/feedback', methods=['POST'])
 @login_required
 def criar():
-    dataVenda = request.form["dataVenda"]
-    contrato = request.form["nContrato"]
-    tipoContrato = request.form["iTipoContrato"]
-    tipoPagamento = request.form["cTipoPagamento"] 
-    funcionario = request.form["cFuncionario"] 
-    cliente = request.form["cCliente"] 
+    ambiente = request.form["ambiente"]
+    notaAtendimento = request.form["notaAtendimento"]
+    notaVendedor = request.form["notaVendedor"]
+    notaMontagem = request.form["notaMontagem"]
+    mensagem = request.form["mensagem"]
+    pedido = request.form["cPedido"]
 
     dadosFeed = {
-        "dataVenda": dataVenda,
-        "nContrato": contrato,
-        "iTipoContrato": tipoContrato,
-        "cTipoPagamento": tipoPagamento,
-        "cFuncionario": funcionario,  
-        "cCliente":cliente  
+        'ambiente': ambiente,
+        'notaAtendimento': notaAtendimento,
+        'notaVendedor': notaVendedor,
+        'notaMontagem': notaMontagem,
+        'mensagem': mensagem,
+        'cPedido': pedido
     }
 
     try:
-        criaVenda = Vendas.post(Vendas, dadosVendas)
-
-        return 'Venda criado com sucesso ! ', 201
+        criado = Feedbacks.post(Feedbacks,dadosFeed)
+        return 'Feed criado com sucesso ! ', 201
     except IdJaExiste:
-        return  "mensagem:ID venda já existe.", 500
-    except IdFuncNaoExiste:
-        return "mensagem: Funcionario não encontrado", 404
-    except IdClienteNaoExiste:
-        return "mensagem: Cliente não encontrado.", 404
+        return  "mensagem:ID feed já existe.", 500
+    except VendaNaoExiste:
+        return "mensagem: Venda não encontrada", 404
     except ErroInserir:
-        return "mensagem: Ocorreu um erro ao inserir a venda, verifique a integridade.", 500
-    except DataInvalida:
-        return "mensagem: Data invalida.", 500
-    except TipoNaoExiste:
-        return "mensagem: Tipo venda não encontrado", 404
+        return "mensagem: Erro ao inserir ! ", 404
 
-"""
