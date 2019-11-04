@@ -15,12 +15,12 @@ def home():
 @app.route('/paginainicial')
 def paginainicial():
     return render_template('index.html')
-
+'''
 #apaga eu dps
 @app.route('/feedback')
 def feedback():
     return render_template('Avaliar_Feedback.html')
-
+'''
 # também posso ser apagado heiiin gatinho <3
 
 @app.route('/agendarSuporte')
