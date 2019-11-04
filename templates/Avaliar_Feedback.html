@@ -84,7 +84,7 @@
 							<a href="http://localhost:5000"><i class=""></i>• Cadastro Clientes</a>
 							<a href="http://localhost:5000/cadastroVendas"><i class=""></i>• Cadastro de Vendas</a>
 							<a href="http://localhost:5000/cadastroFuncionarios"><i class=""></i>• Cadastro de Funcionários</a>
-							<a href="http://localhost:5000/feedback"><i class=""></i>• Feedback</a>
+							<a href="http://localhost:5000/cadastrofeedback"><i class=""></i>• Feedback</a>
 							<a href="http://localhost:5000/agendarSuporte"><i class=""></i>• Agendar Suporte</a>
 							<a href="http://localhost:5000/acompanhamentoPedido"><i class="">• Registro de Acompanhamento</i></a>
 							<a href="{{ url_for('logout') }}"><i class=""></i>• Sair</a>
@@ -244,12 +244,12 @@
                         <div class="texto_centro">
                             <label for="textArea" class="labelTitulo"></label>
                         </div>
-                        <textarea class="form-control" maxlength="100" style="width: 100%; min-height: 100px; max-height: 120px" id="textArea"></textarea>
+                        <input class="form-control" maxlength="100" style="width: 100%; min-height: 100px; max-height: 120px" id="textArea"></input>
                     </div> 
 
                 <!-- AQUI ENCERRA O CAMPO ACIMA -->         
                 
-                <input type="button" name="Confirmarr" value="Confirmar" class="btn-info btn float-right" />
+                <input type="submit" name="Confirmarr" value="Confirmar" class="btn-info btn float-right" />
         		<input type="button" name="Limpar" value="Limpar" onclick=" painelDiario()" class="btn-danger btn float-left" />
                 </div>
 
