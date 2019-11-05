@@ -22,10 +22,11 @@ def feedback():
     return render_template('Avaliar_Feedback.html')
 '''
 # também posso ser apagado heiiin gatinho <3
-
+'''
 @app.route('/agendarSuporte')
 def agendarSuporte():
     return render_template('Agendar_Suporte.html')
+    '''
 
 # campo acima deve ser apagado    
 

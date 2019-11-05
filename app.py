@@ -10,6 +10,8 @@ from tipoPagamento_api import tipoPagamento_app
 from vendas_api import vendas_app
 from acompanhamento_api import acompanhamento_app
 from feedback_api import feedback_app
+from chamado_api import chamados_app
+
 
 app = Flask(__name__)
 app.register_blueprint(acompanhamento_app)
@@ -21,6 +23,7 @@ app.register_blueprint(funcionarios_app)
 app.register_blueprint(tipoPagamento_app)
 app.register_blueprint(vendas_app)
 app.register_blueprint(feedback_app)
+app.register_blueprint(chamados_app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'segredo'
