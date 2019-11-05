@@ -7,18 +7,18 @@ from resources.chamados import Chamados,VendaNaoExiste,IdJaExiste,ErroInserir,\
 chamados_app = Blueprint('chamados_app', __name__, template_folder='templates')
 
 @chamados_app.route('/agendarSuporte', methods=['GET'])
-#@login_required
+@login_required
 def login():
    return render_template("Agendar_Suporte.html")
 
 @chamados_app.route('/chamados', methods=['GET'])
-#@login_required
+@login_required
 def listar():
     listar = Chamados.get(Chamados)
     return jsonify (listar)
 
 @chamados_app.route('/chamados/<int:id>', methods=['GET'])
-#@login_required
+@login_required
 def localizar(id):
     try:
         return jsonify(Chamados.getID(Chamados,id)), 200
@@ -28,7 +28,7 @@ def localizar(id):
 
 
 @chamados_app.route('/chamados', methods=['POST'])
-#@login_required
+@login_required
 def criar():
     try:
         criar = Chamados.post(Chamados)
