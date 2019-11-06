@@ -17,11 +17,15 @@ def login():
     return render_template("CadastroClientes.html")
 '''
 
+@clientes_app.route('/allclientes')
+def paginainicial():
+    return render_template('getClientes.html')
+
 @clientes_app.route('/clientes', methods=['GET'])
 @login_required
 def listar():
-    listar = Clientes.get(Clientes)
-    return jsonify(listar)
+    data = Clientes.get(Clientes)
+    return jsonify(data)
 
 
 @clientes_app.route('/clientes/<int:id>', methods=['GET'])
@@ -33,7 +37,7 @@ def localizar(id):
         return 'menssagem: Cliente não foi encontrado.', 404
 
 
-@clientes_app.route('/clientes', methods=['POST', 'GET'])
+@clientes_app.route('/clientes', methods=['POST'])
 @login_required
 def criar():
     # id = request.form["cCliente"]
