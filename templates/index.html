@@ -1,158 +1,59 @@
-<!doctype html>
-<html class="no-js" lang="PT-BR">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Primos Moveis</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='../static/bootstrap/css/bootstrap.min.css')  }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/owl.carousel.min.css')  }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/font-awesome.min.css')  }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style.css')  }}"> 
-
-
-
- 
-
-    <link rel="stylesheet" href="css/responsive.css"/> 
+  <title>Datatables Example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"/>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 </head>
-
 <body>
-    <form action="/paginalinicial" method="GET">
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-    <!-- header-start -->
-    <header>
-        <div class="header-area ">
-            <div id="sticky-header" class="main-header-area">
-                <div class="container-fluid p-0">
-                    <div class="row align-items-center no-gutters">
-                            <div class="col-xl-3 col-lg-3">
-                                <div class="logo-img" >
-                                    <a href="index.html">
-                                        <img src="../static/img/Logo_PrimosMoveis.png" alt="" style="height: 140px; width: 380px;">
-                                    </a>
-                                </div>
-                            </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="main-menu  d-none d-lg-block">
-                                <nav>
-                                    <ul id="navigation">
-                                        <li><a class="active" href="http://localhost:5000/paginainicial">home</a></li>
-
-
-
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                            <div class="book_room">
-                                <div class="book_btn d-none d-lg-block">
-                                    <a class="popup-with-form" href="http://localhost:5000/login">LOGIN</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- header-end -->
-
-    <!-- slider_area_start -->
-    <div class="slider_area">
-        <div class="single_slider d-flex align-items-center justify-content-center  overlay2">
-            
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="slider_text text-center">
-                            <h3>Primos moveis <br></h3>
-                            <p>Móveis Planejados</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- footer -->
-    <footer class="footer">
-            <div class="footer_top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-3 col-md-6 col-lg-3">
-                            <div class="footer_widget">
-                                <h3 class="footer_title">
-                                    Localização
-                                </h3>
-                                <p class="footer_text doanar"> <a class="first" href="#">Av. Barão de Mauá, 819 - Vila Bocaina, Mauá - SP, 09310-000</a> <br>
-                                    <a href="#"></a></p>
-    
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 col-lg-3">
-                            <div class="footer_widget">
-                                <h3 class="footer_title">
-                                    Email para contato
-                                </h3>
-                                <p class="footer_text">primosmoveis@primos.com.br <br>
-                                    <a class="domain" href="#"></a></p>
-                                <div class="socail_links">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-facebook-square"></i>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-md-6 col-lg-2">
-                            <div class="footer_widget">
-                                <h3 class="footer_title">
-                                    Formas de Pagamento
-                                </h3>
-                                <ul>
-                                    <li><a href="#">Cartão MasterCard</a></li>
-                                    <li><a href="#">VISA</a></li>
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-lg-4">
-                            <div class="footer_widget">
-                                <h3 class="footer_title">
-                                    Trabalhando para o seu conforto!
-                                </h3>
-
-                      
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </footer>
-
-
-    </form>
+<h1>Clientes</h1>
+<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Data Nascimento</th>
+                <th>Data Cadastro</th>
+                <th>Procedencia</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Data Nascimento</th>
+                <th>Data Cadastro</th>
+                <th>Procedencia</th>
+            </tr>
+        </tfoot>
+    </table>
+<script>
+function setupData() {
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "ajax": {
+                // "url": "static/objects2.txt", // This works for the static file
+                "url": "/clientes", // This now works too thanks to @kthorngren
+                "dataType": "json",
+                "dataSrc": "data",
+                "contentType":"application/json"
+            },
+            "columns": [
+                {"data": "iNome"},
+                {"data": "nCpf"},
+                {"data": "iEmail"},
+                {"data": "dataNascimento"},
+                {"data": "dataCadastro"},
+                {"data": "iProcedencia"}
+            ]
+        });
+    });
+}
+$( window ).on( "load", setupData );
+</script>
 </body>
-
 </html>
