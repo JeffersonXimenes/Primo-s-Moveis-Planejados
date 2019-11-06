@@ -24,7 +24,7 @@ class Clientes(Resource):
     atributos.add_argument('iProcedencia', type=str)
 
     def get(self):
-        return {'data': [cliente.json() for cliente in ClienteModel.query.all()]} # SELECT * FROM clientes
+        return {'Clientes': [cliente.json() for cliente in ClienteModel.query.all()]} # SELECT * FROM clientes
     def post(self):
         dados = Clientes.atributos.parse_args()
         id = dados['cCliente']
