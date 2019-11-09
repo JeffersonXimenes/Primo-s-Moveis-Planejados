@@ -1,0 +1,268 @@
+{% if current_user.is_authenticated %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Feedback</title>
+       
+        <!-- import css booststrap -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='../static/bootstrap/css/bootstrap.min.css')  }}"> 
+
+    	<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/inicial.css') }}"> 
+           
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "0px";
+            document.getElementById("full").style.marginLeft = "250px";
+
+            document.getElementById("mySidenav").style.transition = "0.1s";
+            document.getElementById("main").style.transition = "0.1s";
+            document.getElementById("full").style.transition = "0.1s";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.getElementById("full").style.marginLeft = "0px";
+        }
+
+        function novoChamado(){
+        	document.getElementById("aberturaChamado").style.display = "inline";
+        	document.getElementById("section").style.display = "none";
+        	document.getElementById("section1").style.display = "none";
+        }
+
+        function voltaNovoChamado(){
+        	document.getElementById("aberturaChamado").style.display = "none";
+        	document.getElementById("section1").style.display = "none";
+        	document.getElementById("section").style.display = "inline";
+        }
+
+        function acompanhamentoChamado(){
+        	document.getElementById("section").style.display = "none";
+			document.getElementById("section1").style.display = "inline";
+        }
+
+        function limpar(){
+        	document.getElementById("movel").value = "";
+        	document.getElementById("estrela_vazio").value = "";
+
+        	document.getElementById("textArea").value = "";
+        }
+        </script>
+
+    </head>
+    <body>
+        <form id="form1" action="/feedback" method="POST">
+
+            <div id="full">
+
+                <!-- Logo em cima no TOPO -->
+                <nav id="menu">
+                    <ul> <!-- ../Templates [Última versão]/Logo_PrimosMoveis.png -->
+                        <img src="../static/img/Logo_PrimosMoveis.png" height="80px" width="240px" style="margin-left: 60px">  
+                        <!-- <li class="float-right"><a href="#" onclick="voltaNovoChamado()"> Voltar </a></li>   -->
+                        <a href="#"><li><img class="float-right" style="width: 40px; height: 40px; margin-right: 20px" src="../static/img/back.png"></li></a>
+                    </ul>
+                </nav>
+                <!-- Fim da Logo no TOPO -->
+                    
+            </div>    
+            
+		<!-- Menu lateral -->
+	        <div id="mySidenav" class="sidenav">
+                <a class="title-sidnav simple-text" style="font-size: 30px; background-color: transparent; padding-top: 10px; border: none!important;" >Menu</a>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="background-color: transparent;padding-top: 30px;border:none !important;">&times;</a>
+
+                <ul>
+                    <li>
+							<a href="http://localhost:5000/paginainicial"><i class=""></i>• Pagina Inicial</a>
+							<a href="http://localhost:5000"><i class=""></i>• Cadastro Clientes</a>
+							<a href="http://localhost:5000/cadastroVendas"><i class=""></i>• Cadastro de Vendas</a>
+							<a href="http://localhost:5000/cadastroFuncionarios"><i class=""></i>• Cadastro de Funcionários</a>
+							<a href="http://localhost:5000/cadastrofeedback"><i class=""></i>• Feedback</a>
+							<a href="http://localhost:5000/agendarSuporte"><i class=""></i>• Agendar Suporte</a>
+							<a href="http://localhost:5000/acompanhamentoPedido"><i class="">• Registro de Acompanhamento</i></a>
+							<a href="{{ url_for('logout') }}"><i class=""></i>• Sair</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="main" class="no-gutters row" style="margin-top: -20px;">
+                <div class="col-md-6 flex-column">
+                    <span style="font-size: 30px; cursor: pointer; color: rgb(255, 255, 255) !important;" onclick="openNav()">&#9776;</span>
+                </div>
+            </div>
+    <!-- Menu lateral -->
+
+
+            <section class="row no-gutters" style="margin-top: -60px">    
+                <div class="col-md-6 offset-md-3">
+                  
+                        <!-- <h1 class="text-center text-secondary"> Feedback </h1> -->
+                        <h1 class="text-center" style="color: azure; font-size: 40px;"> Feedback </h1>
+                       
+                        <p class="text-center" style="text-align: center; color: azure"> Gostou do nosso serviço? Deixe sua opinião 😊 </p>
+                 
+                <div class="form-group">
+                    <div class="texto_centro">
+                        <label for="movel" class="labelTitulo">Selecione o Ambiente</label>
+                    </div>
+                    <select class="form-control" id="movel">
+        				<option>
+        					Móveis planejados para Cozinha
+        				</option>
+        				<option>
+        					Móveis planejados para Dormitório
+                        </option>
+                        <option>
+                            Móveis planejados para Lavanderia
+                        </option>
+                        <option>
+                            Móveis planejados para Sala
+                        </option>
+                        <option>
+                            Móveis planejados para Escritório
+                        </option>
+                        <option>
+                            Móveis planejados para Banheiro
+                        </option>
+        			</select>
+                </div>
+                <!-- CAMPO NOTA AVALIAÇÃO DO CLIENTE-->
+                <div class="text_color">
+                    <!-- <h1 class="text-center text-secondary"> Feedback </h1> -->
+                    <label for="textArea" class="label_avaliacao_cliente">Avaliação do Cliente</label>
+                </div>
+
+                <!-- AVALIAÇÃO DO ATENDIMENTO -->
+               
+                <div class="texto_centro">
+                    <label for="textArea" class="labelTitulo">Nota do Atendimento</label>
+                </div>
+                <div class="estrela_centro">
+                        <div class="estrelas">
+                                <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
+                                
+                                <label for="cm_star-1"><i class="fa"></i></label> 
+                                <input type="radio" id="cm_star-1" name="fb" value="1"/>
+                                
+                                <label for="cm_star-2"><i class="fa"></i></label>                      
+                                <input type="radio" id="cm_star-2" name="fb" value="2"/>
+                                
+                                <label for="cm_star-3"><i class="fa"></i></label>                         
+                                <input type="radio" id="cm_star-3" name="fb" value="3"/>
+                                
+                                <label for="cm_star-4"><i class="fa"></i></label>                           
+                                <input type="radio" id="cm_star-4" name="fb" value="4"/>
+                                
+                                <label for="cm_star-5"><i class="fa"></i></label>                                
+                                <input type="radio" id="cm_star-5" name="fb" value="5"/> 
+                        </div>   
+                    </div> 
+                <!-- AQUI ENCERRA O CAMPO ACIMA -->
+               
+                <!-- AQUI COMEÇA O CAMPO NOTA VENDEDOR-->
+                <div class="ajuste_letra">
+                    <div class="texto_centro">
+                        <label for="textArea"  class="labelTitulo">Nota ao Vendedor</label>
+                    </div>
+                </div>
+                <div class="estrela_centro">
+                    <div class="estrelas">
+                        <input type="radio" id="cm_star-vendedor_vazio" name="fbcd" value="" checked/>
+                        
+                        <label for="cm_star-vendedor-1"><i class="fa"></i></label>
+                        <input type="radio" id="cm_star-vendedor-1" name="fbcd" value="1"/>
+                        
+                        <label for="cm_star-vendedor-2"><i class="fa"></i></label>                               
+                        <input type="radio" id="cm_star-vendedor-2" name="fbcd" value="2"/>
+                        
+                        <label for="cm_star-vendedor-3"><i class="fa"></i></label>                               
+                        <input type="radio" id="cm_star-vendedor-3" name="fbcd" value="3"/>
+                        
+                        <label for="cm_star-vendedor-4"><i class="fa"></i></label>                          
+                        <input type="radio" id="cm_star-vendedor-4" name="fbcd" value="4"/>                              
+                        
+                        <label for="cm_star-vendedor-5"><i class="fa"></i></label>         
+                        <input type="radio" id="cm_star-vendedor-5" name="fbcd" value="5"/> 
+                    </div>   
+                </div> 
+                <!-- AQUI ENCERRA O CAMPO NOTA VENDEDOR-->
+
+
+
+
+
+                <!-- AQUI COMEÇA O CAMPO AVALIAÇÃO MONTAGEM -->
+                <div class="ajuste_letra">
+                    <div class="form-group">
+                        <div class="texto_centro">
+                            <label for="textArea" class="labelTitulo">Avaliação da Montagem</label>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="estrela_centro">
+                    <div class="estrelas">
+                        <div class="ajuste-estrela">
+                            <input type="radio" id="estrela_vazio" name="fbc" value="" checked>
+                                
+                            <label for="estrela-1"><i class="fa"></i></label>
+                            <input type="radio" id="estrela-1" name="fbc" value="1">
+                                
+                            <label for="estrela-2"><i class="fa"></i></label>
+                            <input type="radio" id="estrela-2" name="fbc" value="2">
+                                
+                            <label for="estrela-3"><i class="fa"></i></label>  
+                            <input type="radio" id="estrela-3" name="fbc" value="3">
+                                
+                            <label for="estrela-4"><i class="fa"></i></label>
+                            <input type="radio" id="estrela-4" name="fbc" value="4">
+                                
+                            <label for="estrela-5"><i class="fa"></i></label>
+                            <input type="radio" id="estrela-5" name="fbc" value="5"><br><br>
+                        </div>        
+                    </div>   
+                </div> 
+                 <!-- AQUI ENCERRA O CAMPO AVALIAÇÃO MONTAGEM -->
+               
+                <!-- CAMPO TEXTO -->
+                <div class="text_color">
+                    <!-- <h1 class="text-center text-secondary"> Feedback </h1> -->
+                    <label for="textArea" class="label_avaliacao_melhoria">Deixe sua mensagem</label>
+                </div>
+                <!-- FIM CAMPO TEXTO -->
+
+                <!-- AQUI COMEÇA O PRÓXIMO TÓPICO <PENDENTE FAZER> -->        
+
+                    <div class="form-group">
+                        <div class="texto_centro">
+                            <label for="textArea" class="labelTitulo"></label>
+                        </div>
+                        <input class="form-control" maxlength="100" style="width: 100%; min-height: 100px; max-height: 120px" id="textArea"></input>
+                    </div> 
+
+                <!-- AQUI ENCERRA O CAMPO ACIMA -->         
+                
+                <input type="submit" name="Confirmarr" value="Confirmar" class="btn-info btn float-right" />
+        		<input type="button" name="Limpar" value="Limpar" onclick=" painelDiario()" class="btn-danger btn float-left" />
+                </div>
+
+            </section>
+            </div>
+        </form>
+
+    </body>
+</html>
+
+{% else %}
+    <div>
+        <h1>Visitante</h1>
+        <p>Esste texto aparece caso você não esteja logado.</p>
+    </div>
+{% endif %}
