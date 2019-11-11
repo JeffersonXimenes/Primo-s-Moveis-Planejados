@@ -49,19 +49,23 @@ class Vendas(Resource):
         return {'vendas': [venda.json() for venda in VendasModel.query.all()]}  # SELECT * FROM clientes
 
     def getAll(self,cPedido ):
-        venda = VendasModel.find_venda(cPedido)
-        if venda:
-            vendaAtual = venda.json()
-            pegaCodigoCliente = vendaAtual["cCliente"]
-            Cliente = ClienteModel.find_cliente(pegaCodigoCliente)
-            nomeCliente = Cliente.json()
-            endereco = EnderecoModel.find_endereco(pegaCodigoCliente)
-            nomeEndereco = endereco.json()
+        try:
+            venda = VendasModel.find_venda(cPedido)
+            if venda:
+                vendaAtual = venda.json()
+                pegaCodigoCliente = vendaAtual["cCliente"]
+                Cliente = ClienteModel.find_cliente(pegaCodigoCliente)
+                nomeCliente = Cliente.json()
+                endereco = EnderecoModel.find_endereco(pegaCodigoCliente)
+                nomeEndereco = endereco.json()
+                funcionario = FuncionarioModel.find_funcionario(vendaAtual['cFuncionario'])
+                pegafunc = funcionario.json()
 
 
-            retorno = {'Dados da Venda':vendaAtual,'Dados Cliente':nomeCliente, 'Dados do Endereco': nomeEndereco}
-            return retorno
-        return 'Venda não existe'
+                retorno = {'Dados da Venda':vendaAtual,'Dados Cliente':nomeCliente, 'Dados do Endereco': nomeEndereco, 'Dados Funcionario': pegafunc}
+                return retorno
+        except:
+            raise VendaNaoExiste
 
 
     def post(self, dadosCPF, dadosFunc):
