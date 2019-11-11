@@ -3,6 +3,7 @@ from models.vendas_models import VendasModel
 from infraestrutura.validacoes import validar_data
 from models.clientes import ClienteModel
 from models.funcionario_models import FuncionarioModel
+from models.endereco_models import EnderecoModel
 from models.tipoPagamento_models import TipoPagamentoModel
 
 
@@ -46,6 +47,22 @@ class Vendas(Resource):
 
     def get(self):
         return {'vendas': [venda.json() for venda in VendasModel.query.all()]}  # SELECT * FROM clientes
+
+    def getAll(self,cPedido ):
+        venda = VendasModel.find_venda(cPedido)
+        if venda:
+            vendaAtual = venda.json()
+            pegaCodigoCliente = vendaAtual["cCliente"]
+            Cliente = ClienteModel.find_cliente(pegaCodigoCliente)
+            nomeCliente = Cliente.json()
+            endereco = EnderecoModel.find_endereco(pegaCodigoCliente)
+            nomeEndereco = endereco.json()
+
+
+            retorno = {'Dados da Venda':vendaAtual,'Dados Cliente':nomeCliente, 'Dados do Endereco': nomeEndereco}
+            return retorno
+        return 'Venda não existe'
+
 
     def post(self, dadosCPF, dadosFunc):
         dados = Vendas.atributos.parse_args()
