@@ -18,6 +18,17 @@ def listar():
     listar = Vendas.get(Vendas)
     return jsonify (listar)
 
+
+@vendas_app.route('/vendasAll/<int:id>', methods=['GET'])
+@login_required
+def GetTudo(id):
+    try:
+        a =  jsonify(Vendas.getAll(Venda,id)), 200
+        return a
+    except VendaNaoExiste:
+        return 'menssagem: Venda não foi encontrada.', 404
+
+
 @vendas_app.route('/vendas/<int:id>', methods=['GET'])
 @login_required
 def localizar(id):
@@ -85,8 +96,8 @@ def atualizar(id):
 @login_required
 def remover(id):
     try:
-        removido = Venda.delete(Venda,id)
-        return jsonify(to_dict(removido))
+        Venda.delete(Venda,id)
+        return ('removido') , 200
     except VendaNaoExiste:
         return 'menssagem: Venda não encontrada.'
 
