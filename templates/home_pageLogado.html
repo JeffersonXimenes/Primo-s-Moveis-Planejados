@@ -1,0 +1,129 @@
+{% if current_user.is_authenticated %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+        <title>Login Realizado</title>
+        <meta charset="UTF-8">
+    
+        <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/realizado.css') }}">     
+
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    
+    
+
+    
+    </head>
+    <body style="background-color: black;">
+
+      <form method="GET" action="/logado">
+    <div class="navbar-wrapper">
+      <div class="container">
+        <div class="navbar navbar-inverse navbar-static-top">
+
+            <div class="navbar-header">
+    	    <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    	      <span class="icon-bar"></span>
+    	      <span class="icon-bar"></span>
+    	      <span class="icon-bar"></span>
+    	    </a>
+            <a class="navbar-brand" ><img src="../static/img/Inicial_Logo_PrimosMoveis.png" style="width:150px; margin-top: -13px;" class="img-responsive"></a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class=""><a href="http://localhost:5000/logado">Pagina Inicial</a></li>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cliente<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="http://localhost:5000/CadastrarCliente">Cadastrar Clientes</a></li>
+                    <li><a href="#">Clientes Cadastrados</a></li>
+                    <li class="divider"></li>
+                    <li><a href="http://localhost:5000/agendarSuporte">Agendar Suporte</a></li>
+                    <li><a href="#">Acompanhar Suporte</a></li>
+                    <li class="divider"></li>
+                    <li><a href="http://localhost:5000/cadastrofeedback">Realizar Feedback</a></li>
+                    <li><a href="#">Feedback Realizados</a></li>
+                  </ul>
+                </li>
+              
+                <!-- funcionario -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Funcionário<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="http://localhost:5000/cadastroFuncionarios">Cadastrar Funcionários</a></li>
+                    <li class="divider"></li>
+                    <li><a href="http://localhost:5000/cadastroVendas">Cadastrar Venda</a></li>
+                    <li class="divider"></li>
+                    <li><a href="http://localhost:5000/acompanhamentoPedido">Registro de Acompanhamento</a></li>
+                    <li class="divider"></li>
+                  </ul>
+                </li>
+              
+                <li class="dropdown" data-toggle="dropdown">
+                    <li><a href="{{ url_for('logout') }}" >Sair</a></li>
+                
+                </li>
+              
+              </ul>
+            </div>
+          
+        </div>
+      </div><!-- /container -->
+    </div><!-- /navbar wrapper -->
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-interval="false">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      
+      </ol>
+    
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="../static/img/dormitorio1.jpg" style="width:100%" class="img-responsive">
+          <div class="container">
+            <div class="carousel-caption"></div>
+          </div>
+        </div>
+      
+        <div class="item">
+          <div class="item active">
+            <img src="../static/img/dormitorio2.jfif" style="width:100%" class="img-responsive">
+              <div class="container">
+                  <div class="carousel-caption"></div>
+              </div>
+          </div>
+        </div>
+      
+      
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="icon-prev"></span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="icon-next"></span>
+      </a>  
+    </div>
+
+   </form>
+
+    </body>
+</html>
+
+{% else %}
+    <div>
+        <h1>Visitante</h1>
+        <p>Esste texto aparece caso você não esteja logado.</p>
+    </div>
+{% endif %}

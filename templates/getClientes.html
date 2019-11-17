@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Datatables Example</title>
+  <meta charset="utf-8">
+
+
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='../static/bootstrap/css/bootstrap.min.css')  }}"> 
+  
+  <script src="{{ url_for('static', filename='../static/js/jquery-3.3.1.js')  }}"></script>
+  <script src="{{ url_for('static', filename='../static/js/jquery.dataTables.min.js')  }}"></script>
+
+  
+</head>
+<body>
+<h1>Clientes</h1>
+
+<table id="cliente" class="table" style="width:100%">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Email</th>
+                <th scope="col">Data Nascimento</th>
+                <th scope="col">Data Cadastro</th>
+                <th scope="col">Procedencia</th>
+            </tr>
+        </thead>
+    </table>
+
+    
+
+
+
+<script>
+function setupData() {
+    $(document).ready(function () {
+        $('#cliente').DataTable({
+            "ajax": {
+                // "url": "static/objects2.txt", // This works for the static file
+                "url": "/clientes", // This now works too thanks to @kthorngren
+                "dataType": "json",
+                "dataSrc": "Clientes",
+                "contentType":"application/json"
+            },
+            "columns": [
+                {"data": "iNome"},
+                {"data": "nCpf"},
+                {"data": "iEmail"},
+                {"data": "dataNascimento"},
+                {"data": "dataCadastro"},
+                {"data": "iProcedencia"}
+            ]
+        });
+    });
+}
+$( window ).on( "load", setupData );
+</script>
+</body>
+</html>

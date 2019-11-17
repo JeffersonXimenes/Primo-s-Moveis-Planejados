@@ -10,10 +10,21 @@
 - pip install Flask-SQLAlchemy
 - pip install jsons
 - pip install requests
+- pip install pyodbc
+- pip install Jinja2
+- pip install Flask-EXT
+- pip install mypy_entensions
+- pip install typing extensions
+- pip install wrap_connection
+- pip install flask_login
 
-Após a instalação, execute app.py
+Versão mais instável do projeto. 
+
+
+Após a instalação, execute main.py
+Criação dos models ClienteModel, TelefoneModel, EndereçosModel, CargoModel, FuncionarioModels, TiposModels, VendasModels e AcompanhamentoModels.
  
  Link do Site: --- AINDA SEM LINK --- 
- Link aplicativo Mobile --- AINDA SEM LINK --- 
+ Link aplicativo Mobile --- http://jeffersonximenes.pythonanywhere.com/cliente --- 
  
 - Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes,Jefferson Ximenes e João Victor Nunes. 

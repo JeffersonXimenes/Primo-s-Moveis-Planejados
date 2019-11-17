@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastro</title>
+
+
+        <!-- habilitar css com Flask-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='../static/bootstrap/css/bootstrap.min.css')  }}"> 
+       	<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/login.css') }}"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/cadastro.css') }}"> 
+        
+    </head>
+    <body class="bg-default">
+        <form action="/register" method="POST" >
+            <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
+                <div class="container px-4">
+                    <img style="height: 95px; " src="../static/img/Logo_PrimosMoveis.png">
+                                        
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-main">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                              <a class="nav-link nav-link-icon" href="http://localhost:5000/paginainicial" >
+                                
+                                <span>Pagina Inicial</span>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link nav-link-icon" href="http://localhost:5000/register">
+                               
+                                <span >Registrar</span>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link nav-link-icon" href="http://localhost:5000/login" >
+                               
+                                <span >Login</span>
+                              </a>
+                            </li>                        
+                        </ul>
+                  </div>
+                </div>
+            </nav>
+              <!-- Header -->
+            <div class="container">
+                <div class="header-body text-center mb-7">
+                    <div class="row justify-content-center">
+                         <div class="col-lg-5 col-md-6">
+                           <h1 class="text-white" style="font-size: 40px; height: 100px;" >Cadastre-se</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+              <!-- Conteúdo da página men -->
+            <div class="container mt--8 pb-5">
+               <!-- Tabela branca -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="card bg-secondary shadow border-0">
+                            <div class="card-body px-lg-5 py-lg-5">
+                               <div class="text-center text-muted mb-4">
+                                    <small></small>
+                               </div>
+                    
+                              <div class="form-group">
+                                  <div class="input-group input-group-alternative mb-3">
+                                      <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                      </div>
+                                  <input class="form-control" name="name"  placeholder="Name" id="name" type="text" onkeyup="verificar_campo_str(this);" required>
+
+                                  <script>
+                                    function verificar_campo_str(){
+                                    var texto=document.getElementById("name").value;
+                                    for (letra of texto){
+                                        if (!isNaN(texto)){
+                                            alert("Não digite números! 🤷");
+                                            document.getElementById("name").value="";
+                                            return;
+                                        }
+                                    
+                                        letraspermitidas="ABCEDFGHIJKLMNOPQRSTUVXWYZ abcdefghijklmnopqrstuvxwyzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ"
+                                        var ok=false;
+                                        for (letra2 of letraspermitidas ){
+                                            if (letra==letra2){
+                                                ok=true;
+                                            }
+                                        }
+                                        if (!ok){
+                                            alert("Não digite caracteres que não sejam letras ou espaços");
+                                            document.getElementById("name").value="";
+                                            return; 
+                                            }
+                                        }
+                                    }
+                                </script>
+
+                                  </div>
+                              </div>
+
+
+                                <div class="form-group">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        </div>
+                                    <input class="form-control" placeholder="Email" name="email" id="e-mail" onkeyup="verificar_campo_email(this);"  type="email" required>
+
+                                    <script>
+                                        function verificar_campo_email(){
+                                            var texto=document.getElementById("e-mail").value;
+                                            for (letra of texto){
+                                                if (!isNaN(texto)){
+                                                    return;
+                                                }   
+                                            
+                                                letraspermitidas="ABCEDFGHIJKLMNOPQRSTUVXWYZ abcdefghijklmnopqrstuvxwyzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ -_@. 123456789"
+                                                var ok=false;
+                                                for (letra2 of letraspermitidas ){
+                                                    if (letra==letra2){
+                                                        ok=true;
+                                                    }
+                                                }
+                                                if (!ok){
+                                                    alert("Não tente caracteres pra lá de especiais!");
+                                                    document.getElementById("e-mail").value="";
+                                                    return; 
+                                                }
+                                            }
+                                        }
+                                    </script>	                                    
+
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        </div>
+                                    <input class="form-control" name="password" placeholder="Password" type="password" maxlength="12" required>
+                                    </div>
+                                </div>
+                      
+                                <div class="row my-4"></div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-block btn-large" onclick="cadastro()" name="Confirmar" id="btn_confirmar">CADASTRAR</button>
+                                
+                                    <script>
+                                        function cadastro(){
+                                            var name = document.getElementById("name").value;
+                                            var email = document.getElementById("email").value;
+                                            var password = document.getElementById("password").value;
+
+
+                                            if (name.length == "" && email.length == "" && password.length == "") {
+                                                alert("Cadastrado não efetuado! Por favor preencha os campos.")
+                                            } else {
+                                                alert("Cadastro efetuado com sucesso!")
+                                            }                                            
+                                          }                                      
+                                
+                                    </script>
+                                </div>                       
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="py-5">
+                <div class="container">
+                    <div class="row align-items-center justify-content-xl-between">
+                        <div class="col-xl-6">
+                            <div class="copyright text-center text-xl-left text-muted" >
+                                <a  class="font-weight-bold ml-1"  target="_blank" style="color: aliceblue;"> © 2019 Primo's Moveis</a>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6">
+                            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                                <li class="nav-item">
+                                  <a class="nav-link " target="_blank" style="color: aliceblue;">Móveis de qualidade!</a>
+                                </li>                        
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </form>
+    </body>
+</html>
