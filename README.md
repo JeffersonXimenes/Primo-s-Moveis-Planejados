@@ -18,11 +18,13 @@
 - pip install wrap_connection
 - pip install flask_login
 
-Após a instalação, execute main.py
- 
- Link do Site: --- Apenas Local --- 
- Link aplicativo Mobile --- https://jeffersonximenes.pythonanywhere.com/cliente --- 
- 
-- Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes, Jefferson Ximenes e João Victor Nunes. 
+Versão mais instável do projeto. 
 
-# OBS: Lembrando que a Versão utilizado na OPE foi a V13 [OPE], caso fique interessado. 
+
+Após a instalação, execute main.py
+Criação dos models ClienteModel, TelefoneModel, EndereçosModel, CargoModel, FuncionarioModels, TiposModels, VendasModels e AcompanhamentoModels.
+ 
+ Link do Site: --- AINDA SEM LINK --- 
+ Link aplicativo Mobile --- http://jeffersonximenes.pythonanywhere.com/cliente --- 
+ 
+- Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes,Jefferson Ximenes e João Victor Nunes. 
