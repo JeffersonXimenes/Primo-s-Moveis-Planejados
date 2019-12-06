@@ -23,6 +23,6 @@ Após a instalação, execute main.py
  Link do Site: --- Apenas Local --- 
  Link aplicativo Mobile --- https://jeffersonximenes.pythonanywhere.com/cliente --- 
  
-- Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes,Jefferson Ximenes e João Victor Nunes. 
+- Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes, Jefferson Ximenes e João Victor Nunes. 
 
 # OBS: Lembrando que a Versão utilizado na OPE foi a V13 [OPE], caso fique interessado. 
