@@ -25,4 +25,4 @@ Após a instalação, execute main.py
  
 - Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes,Jefferson Ximenes e João Victor Nunes. 
 
-OBS: Lembrando que a Versão utilizado na OPE foi a V13 [OPE], caso fique interessado. 
+# OBS: Lembrando que a Versão utilizado na OPE foi a V13 [OPE], caso fique interessado. 
