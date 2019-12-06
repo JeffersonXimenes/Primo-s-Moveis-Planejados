@@ -1,0 +1,91 @@
+from flask import Blueprint, jsonify, request, render_template
+from flask_login import login_required
+from resources.funcionario import Funcionario,Funcionarios, CpfInvalido, FuncionarioNaoExiste,IdJaExiste,\
+    DataInvalida,CargoNaoExiste,ErroInserir
+from infraestrutura.to_dict import to_dict, to_dict_list
+
+
+funcionarios_app = Blueprint('funcionarios_app', __name__, template_folder='templates')
+
+
+@funcionarios_app.route('/cadastroFuncionarios', methods=['GET'])
+@login_required
+def login():    
+    return render_template("CadastroFuncionarios.html")
+
+
+@funcionarios_app.route('/funcionarios', methods=['GET'])
+@login_required
+def listar():
+    listar = Funcionarios.get(Funcionarios)
+    return jsonify (listar)
+
+@funcionarios_app.route('/funcionarios/<int:id>', methods=['GET'])
+@login_required
+def localizar(id):
+    try:
+        return jsonify(to_dict(Funcionario.get(Funcionario,id))), 200
+    except FuncionarioNaoExiste:
+        return 'menssagem: O funcionario não foi encontrado.', 404
+
+@funcionarios_app.route('/funcionarios', methods=['POST'])
+@login_required
+def criar():
+
+    nome = request.form["iNome"]
+    cpf = request.form["nCpf"]
+    matricula = request.form["nMatricula"]
+    dataNascimento = request.form["dataNascimento"] 
+    cargo = request.form["cCargo"] 
+
+    dadosFuncionario = {
+        "iNome": nome,
+        "nCpf": cpf,
+        "nMatricula": matricula,
+        "dataNascimento": dataNascimento,
+        "cCargo": cargo    
+    }
+
+    try:
+        criarFuncionario = Funcionarios.post(Funcionarios,dadosFuncionario)
+
+        return 'Funcionario cadastrado com sucesso ! ', 201
+
+    except IdJaExiste:
+        return  "mensagem:Id do funcionario já existe.", 500
+    except DataInvalida:
+        return "mensagem: Data invalida.", 500
+    except CpfInvalido:
+        return "mensagem: Cpf do funcionario invalido", 500
+    except CargoNaoExiste:
+        return "mensagem: Cargo do funcionario não encontrado.", 404
+    except ErroInserir:
+        return "mensagem: Ocorreu um erro ao inserir o funcionario, verifique a integridade.", 500
+
+
+@funcionarios_app.route('/funcionarios/<int:id>', methods=['PUT'])
+@login_required
+def atualizar(id):
+    try:
+        atualizado = Funcionario.put(Funcionario,id)
+        return jsonify(to_dict(atualizado)), 201
+    except CargoNaoExiste:
+        return "mensagem: Cargo do funcionario não encontrado.", 404
+    except DataInvalida:
+        return 'mensagem: Data invalida.', 500
+    except CpfInvalido:
+        return "mensagem: Cpf do funcionario invalido", 500
+    except ErroInserir:
+        return "mensagem: Ocorreu um erro ao inserir o funcionario. Verique a integridade"
+
+
+@funcionarios_app.route('/funcionarios/<int:id>', methods=['DELETE'])
+@login_required
+def remover(id):
+    try:
+        removido = Funcionario.delete(Funcionario,id)
+        return jsonify(to_dict(removido)) , 200
+    except FuncionarioNaoExiste:
+        return 'menssagem: Funcionario não encontrado.'
+
+

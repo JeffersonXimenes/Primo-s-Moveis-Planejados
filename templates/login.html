@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/login.css') }}">
+        
+    </head>
+    <body>
+    <section>
+        <img src="../static/img/Logo_PrimosMoveis.png" style="height: 95px; margin-left: 50px;">	
+        <div class="login" style="margin-top: -220px;">
+        	<h1>Login</h1>
+            <form method="POST" action="">
+
+                <input type="email" name="email" id="email" runat="server" placeholder="E-Mail" required/>
+                <input type="password" name="password" id="password" placeholder="Password" runat="server" required />
+                <button type="submit" class="btn btn-primary btn-block btn-large" name="Confirmar" id="btn_confirmar">ENTRAR</button>
+                <a href="http://localhost:5000/register" class="btn btn-primary btn-block btn-large" style="margin-top: 20px">CADASTRE-SE</a></button>
+           
+            </form>
+        </div>
+    </section>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html class="no-js" lang="PT-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Primos Moveis</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/bootstrap/css/bootstrap.min.css')  }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/owl.carousel.min.css')  }}"> 
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style.css')  }}"> 
+
+</head>
+
+<body>
+    <form action="/" method="GET">
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid p-0">
+                    <div class="row align-items-center no-gutters">
+                            <div class="col-xl-3 col-lg-3">
+                                <div class="logo-img" >
+                                    <a href="index.html">
+                                        <img src="../static/img/Logo_PrimosMoveis.png" alt="" style="height: 110px; ">
+                                    </a>
+                                </div>
+                            </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a class="active" href="http://localhost:5000/paginainicial" style="font-size: 20px;">HOME</a></li>
+
+
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="book_room">
+                                <div class="book_btn d-none d-lg-block">
+                                    <a class="popup-with-form" href="http://localhost:5000/register">CADASTRAR-SE</a>
+                                    <a class="popup-with-form" href="http://localhost:5000/login">LOGIN</a>
+                                </div>
+                          
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+
+    <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="single_slider d-flex align-items-center justify-content-center  overlay2">
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="slider_text text-center">
+                            <h3>Primo's móveis <br></h3>
+                            <p>Móveis Planejados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </form>
+</body>
+
+</html>
