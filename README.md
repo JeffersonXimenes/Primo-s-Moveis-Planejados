@@ -22,6 +22,8 @@ Após a instalação, execute main.py
  
  Link do Site: --- Apenas Local --- 
  Link aplicativo Mobile --- https://jeffersonximenes.pythonanywhere.com/cliente --- 
+
+Repositório APP MOBILE: https://github.com/JeffersonXimenes/PrimosMoveis-Mobile
  
 - Equipe: Anna Kelly, Gabriel Bezerra, Hellen Mendes, Jefferson Ximenes e João Victor Nunes. 
 
